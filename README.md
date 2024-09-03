@@ -1,2 +1,23 @@
-# Welcome Students of 4156
-Please follow the assignment specifications on Courseworks when completing this project.
+# COMS 4156 Mini Project
+
+## Build
+
+```
+mkdir build && cd build
+cmake ..
+make
+```
+
+## Run
+
+### Setting up the database
+
+```
+./IndividualMiniproject setup
+```
+
+### Running the web server
+
+```
+./IndividualMiniproject
+```

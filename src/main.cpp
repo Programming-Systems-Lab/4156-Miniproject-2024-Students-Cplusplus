@@ -25,21 +25,16 @@ void signalHandler(int signal) {
  */
 int main(int argc, char* argv[]) {
     std::string mode = argc > 1 ? argv[1] : "run";
-    // MyApp::run(mode);
+    MyApp::run(mode);
 
-    std::cerr << "Running on port 8080\n";
     crow::SimpleApp app;
-    CROW_ROUTE(app, "/")([]() { return "Hello world"; });
-    app.port(8080).run();
+    app.signal_clear();
+    std::signal(SIGINT, signalHandler);
+    std::signal(SIGTERM, signalHandler);
 
-    // crow::SimpleApp app;
-    // app.signal_clear();
-    // std::signal(SIGINT, signalHandler);
-    // std::signal(SIGTERM, signalHandler);
-
-    // RouteController routeController;
-    // routeController.initRoutes(app);
-    // routeController.setDatabase(MyApp::getDatabase());
-    // app.port(8080).multithreaded().run();
+    RouteController routeController;
+    routeController.initRoutes(app);
+    routeController.setDatabase(MyApp::getDatabase());
+    app.port(8080).multithreaded().run();
     return 0;
 }
