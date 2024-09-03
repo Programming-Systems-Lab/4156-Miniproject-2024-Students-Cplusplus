@@ -1,3 +1,4 @@
+// Copyright 2024 Jason Han
 #include "MyApp.h"
 #include <iostream>
 

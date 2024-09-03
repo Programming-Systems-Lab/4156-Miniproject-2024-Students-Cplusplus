@@ -1,3 +1,4 @@
+// Copyright 2024 Jason Han
 #include <string>
 #ifndef COURSE_H
 #define COURSE_H

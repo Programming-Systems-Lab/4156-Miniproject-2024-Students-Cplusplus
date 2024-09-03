@@ -1,3 +1,4 @@
+// Copyright 2024 Jason Han
 #ifndef MYAPP_H
 #define MYAPP_H
 

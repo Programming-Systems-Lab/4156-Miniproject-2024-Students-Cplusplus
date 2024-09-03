@@ -1,3 +1,4 @@
+// Copyright 2024 Jason Han
 #include "MyFileDatabase.h"
 #include <fstream>
 #include <iostream>
