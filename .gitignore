@@ -4,3 +4,7 @@ external_libraries/Crow-1.2.0-Darwin
 build/*
 !build/README.txt
 !external_libraries/README.txt
+
+# clangd
+compile_commands.json
+.cache/
