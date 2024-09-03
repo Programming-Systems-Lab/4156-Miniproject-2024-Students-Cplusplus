@@ -1,12 +1,13 @@
 // Copyright 2024 Jason Han
-#include "Globals.h"
-#include "MyFileDatabase.h"
-#include "RouteController.h"
-#include "crow.h"
 #include <exception>
 #include <iostream>
 #include <map>
 #include <string>
+
+#include "Globals.h"
+#include "MyFileDatabase.h"
+#include "RouteController.h"
+#include "crow.h"  // NOLINT
 
 // Utility function to handle exceptions
 crow::response handleException(const std::exception& e) {
