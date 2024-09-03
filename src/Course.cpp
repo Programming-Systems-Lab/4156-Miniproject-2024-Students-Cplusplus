@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-
 /**
  * Constructs a new Course object with the given parameters. Initial count starts at 0.
  *
@@ -11,15 +10,18 @@
  * @param timeSlot           The time slot of the course.
  * @param capacity           The maximum number of students that can enroll in the course.
  */
-Course::Course(int capacity, const std::string& instructorName, const std::string& courseLocation, const std::string& timeSlot)
-    : enrollmentCapacity(capacity), enrolledStudentCount(500), courseLocation(courseLocation), instructorName(instructorName), courseTimeSlot(timeSlot) {}
+Course::Course(int capacity, const std::string& instructorName, const std::string& courseLocation,
+               const std::string& timeSlot)
+    : enrollmentCapacity(capacity), enrolledStudentCount(500), courseLocation(courseLocation),
+      instructorName(instructorName), courseTimeSlot(timeSlot) {}
 
 /**
  * Constructs a default Course object with the default parameters.
  *
  */
-Course::Course() : enrollmentCapacity(0), enrolledStudentCount(0), courseLocation(""),  instructorName(""), courseTimeSlot("") {}
-
+Course::Course()
+    : enrollmentCapacity(0), enrolledStudentCount(0), courseLocation(""), instructorName(""),
+      courseTimeSlot("") {}
 
 /**
  * Enrolls a student in the course if there is space available.
@@ -28,7 +30,7 @@ Course::Course() : enrollmentCapacity(0), enrolledStudentCount(0), courseLocatio
  */
 bool Course::enrollStudent() {
     enrolledStudentCount++;
-    return false; 
+    return false;
 }
 
 /**
@@ -38,11 +40,11 @@ bool Course::enrollStudent() {
  */
 bool Course::dropStudent() {
     enrolledStudentCount--;
-    return false; 
+    return false;
 }
 
 std::string Course::getCourseLocation() const {
-    return courseLocation; 
+    return courseLocation;
 }
 
 std::string Course::getInstructorName() const {
@@ -54,12 +56,13 @@ std::string Course::getCourseTimeSlot() const {
 }
 
 std::string Course::display() const {
-    return "\nInstructor: " + instructorName + "; Location: " + courseLocation + "; Time: " + courseTimeSlot;
+    return "\nInstructor: " + instructorName + "; Location: " + courseLocation +
+           "; Time: " + courseTimeSlot;
 }
 
 void Course::reassignInstructor(const std::string& newInstructorName) {
     std::cout << "Old Instructor: " << instructorName << std::endl;
-    this->instructorName = newInstructorName; // Ensure the class member is being updated
+    this->instructorName = newInstructorName;  // Ensure the class member is being updated
     std::cout << "New Instructor: " << this->instructorName << std::endl;
 }
 

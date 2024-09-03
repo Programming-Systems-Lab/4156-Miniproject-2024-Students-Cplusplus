@@ -1,11 +1,11 @@
-#include "RouteController.h"
 #include "Globals.h"
 #include "MyFileDatabase.h"
+#include "RouteController.h"
 #include "crow.h"
-#include <map>
-#include <string>
 #include <exception>
 #include <iostream>
+#include <map>
+#include <string>
 
 // Utility function to handle exceptions
 crow::response handleException(const std::exception& e) {
@@ -19,8 +19,10 @@ crow::response handleException(const std::exception& e) {
  * @return A string containing the name of the html file to be loaded.
  */
 void RouteController::index(crow::response& res) {
-    res.write("Welcome, in order to make an API call direct your browser or Postman to an endpoint "
-              "\n\n This can be done using the following format: \n\n http://127.0.0.1:8080/endpoint?arg=value");
+    res.write(
+        "Welcome, in order to make an API call direct your browser or Postman to an endpoint "
+        "\n\n This can be done using the following format: \n\n "
+        "http://127.0.0.1:8080/endpoint?arg=value");
     res.end();
 }
 
@@ -44,7 +46,7 @@ void RouteController::retrieveDepartment(const crow::request& req, crow::respons
             res.write("Department Not Found");
         } else {
             res.code = 200;
-            res.write(it->second.display()); // Use dot operator to access method
+            res.write(it->second.display());  // Use dot operator to access method
         }
         res.end();
     } catch (const std::exception& e) {
@@ -86,7 +88,7 @@ void RouteController::retrieveCourse(const crow::request& req, crow::response& r
                 res.write("Course Not Found");
             } else {
                 res.code = 200;
-                res.write(courseIt->second->display()); // Use dot operator to access method
+                res.write(courseIt->second->display());  // Use dot operator to access method
             }
         }
         res.end();
@@ -129,7 +131,8 @@ void RouteController::isCourseFull(const crow::request& req, crow::response& res
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write(course->isCourseFull() ? "true" : "false"); // Use dot operator to call method
+                res.write(course->isCourseFull() ? "true"
+                                                 : "false");  // Use dot operator to call method
             }
         }
         res.end();
@@ -160,7 +163,8 @@ void RouteController::getMajorCountFromDept(const crow::request& req, crow::resp
             res.write("Department Not Found");
         } else {
             res.code = 200;
-            res.write("There are: " + std::to_string(deptIt->second.getNumberOfMajors()) + " majors in the department"); // Use dot operator to call method
+            res.write("There are: " + std::to_string(deptIt->second.getNumberOfMajors()) +
+                      " majors in the department");  // Use dot operator to call method
         }
         res.end();
     } catch (const std::exception& e) {
@@ -190,7 +194,8 @@ void RouteController::identifyDeptChair(const crow::request& req, crow::response
             res.write("Department Not Found");
         } else {
             res.code = 200;
-            res.write(deptIt->second.getDepartmentChair() + " is the department chair."); // Use dot operator to call method
+            res.write(deptIt->second.getDepartmentChair() +
+                      " is the department chair.");  // Use dot operator to call method
         }
         res.end();
     } catch (const std::exception& e) {
@@ -232,7 +237,8 @@ void RouteController::findCourseLocation(const crow::request& req, crow::respons
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write(course->getCourseLocation() + " is where the course is located."); // Use dot operator to call method
+                res.write(course->getCourseLocation() +
+                          " is where the course is located.");  // Use dot operator to call method
             }
         }
         res.end();
@@ -275,7 +281,9 @@ void RouteController::findCourseInstructor(const crow::request& req, crow::respo
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write(course->getInstructorName() + " is the instructor for the course."); // Use dot operator to call method
+                res.write(
+                    course->getInstructorName() +
+                    " is the instructor for the course.");  // Use dot operator to call method
             }
         }
         res.end();
@@ -318,7 +326,7 @@ void RouteController::findCourseTime(const crow::request& req, crow::response& r
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write("The course meets at: " + course->getCourseTimeSlot()); 
+                res.write("The course meets at: " + course->getCourseTimeSlot());
             }
         }
         res.end();
@@ -347,7 +355,7 @@ void RouteController::addMajorToDept(const crow::request& req, crow::response& r
             res.code = 404;
             res.write("Department Not Found");
         } else {
-            deptIt->second.addPersonToMajor(); // Use dot operator to call method
+            deptIt->second.addPersonToMajor();  // Use dot operator to call method
             res.code = 200;
             res.write("Attribute was updated successfully");
         }
@@ -428,7 +436,7 @@ void RouteController::setCourseInstructor(const crow::request& req, crow::respon
         auto instructor = req.url_params.get("instructor");
 
         int courseCode = std::stoi(courseCodeStr);
-    
+
         auto departmentMapping = myFileDatabase->getDepartmentMapping();
         auto deptIt = departmentMapping.find(deptCode);
 
@@ -486,7 +494,6 @@ void RouteController::setCourseTime(const crow::request& req, crow::response& re
     }
 }
 
-
 /**
  * Attempts to remove a student from the specified department.
  *
@@ -521,7 +528,7 @@ void RouteController::removeMajorFromDept(const crow::request& req, crow::respon
  * Attempts to remove a student from the specified department.
  *
  * @param deptCode       A {@code String} representing the department.
- * 
+ *
  * @param courseCode     A {@code int} representing the course the user wishes
  *                       to find information about.
  *
@@ -551,10 +558,10 @@ void RouteController::dropStudentFromCourse(const crow::request& req, crow::resp
                 bool isStudentDropped = courseIt->second->dropStudent();
                 if (isStudentDropped) {
                     res.code = 200;
-                    res.write("Student has been dropped"); 
+                    res.write("Student has been dropped");
                 } else {
                     res.code = 400;
-                    res.write("Student has not been dropped"); 
+                    res.write("Student has not been dropped");
                 }
             }
         }
@@ -566,10 +573,8 @@ void RouteController::dropStudentFromCourse(const crow::request& req, crow::resp
 
 // Initialize API Routes
 void RouteController::initRoutes(crow::App<>& app) {
-    CROW_ROUTE(app, "/")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
-            index(res);
-        });
+    CROW_ROUTE(app, "/").methods(crow::HTTPMethod::GET)(
+        [this](const crow::request& req, crow::response& res) { index(res); });
 
     CROW_ROUTE(app, "/retrieveDept")
         .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
@@ -577,14 +582,12 @@ void RouteController::initRoutes(crow::App<>& app) {
         });
 
     CROW_ROUTE(app, "/retrieveCourse")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
-            retrieveCourse(req, res);
-        });
+        .methods(crow::HTTPMethod::GET)(
+            [this](const crow::request& req, crow::response& res) { retrieveCourse(req, res); });
 
     CROW_ROUTE(app, "/isCourseFull")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
-            isCourseFull(req, res);
-        });
+        .methods(crow::HTTPMethod::GET)(
+            [this](const crow::request& req, crow::response& res) { isCourseFull(req, res); });
 
     CROW_ROUTE(app, "/getMajorCountFromDept")
         .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
@@ -607,14 +610,12 @@ void RouteController::initRoutes(crow::App<>& app) {
         });
 
     CROW_ROUTE(app, "/findCourseTime")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
-            findCourseTime(req, res);
-        });
+        .methods(crow::HTTPMethod::GET)(
+            [this](const crow::request& req, crow::response& res) { findCourseTime(req, res); });
 
     CROW_ROUTE(app, "/addMajorToDept")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
-            addMajorToDept(req, res);
-        });
+        .methods(crow::HTTPMethod::GET)(
+            [this](const crow::request& req, crow::response& res) { addMajorToDept(req, res); });
 
     CROW_ROUTE(app, "/removeMajorFromDept")
         .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
@@ -632,9 +633,8 @@ void RouteController::initRoutes(crow::App<>& app) {
         });
 
     CROW_ROUTE(app, "/changeCourseTime")
-        .methods(crow::HTTPMethod::PATCH)([this](const crow::request& req, crow::response& res) {
-            setCourseTime(req, res);
-        });
+        .methods(crow::HTTPMethod::PATCH)(
+            [this](const crow::request& req, crow::response& res) { setCourseTime(req, res); });
 
     CROW_ROUTE(app, "/setEnrollmentCount")
         .methods(crow::HTTPMethod::PATCH)([this](const crow::request& req, crow::response& res) {
@@ -642,6 +642,6 @@ void RouteController::initRoutes(crow::App<>& app) {
         });
 }
 
-void RouteController::setDatabase(MyFileDatabase *db) {
+void RouteController::setDatabase(MyFileDatabase* db) {
     myFileDatabase = db;
 }

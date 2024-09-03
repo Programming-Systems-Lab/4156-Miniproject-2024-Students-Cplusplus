@@ -30,7 +30,7 @@ void MyApp::overrideDatabase(MyFileDatabase* testData) {
     saveData = false;
 }
 
-MyFileDatabase *MyApp::getDatabase() {
+MyFileDatabase* MyApp::getDatabase() {
     return myFileDatabase;
 }
 
@@ -118,7 +118,8 @@ void MyApp::resetDataFile() {
     ieor4405->setEnrolledStudentCount(19);
     auto ieor4511 = std::make_shared<Course>(150, "Michael Robbins", "633 MUDD", "9:00-11:30");
     ieor4511->setEnrolledStudentCount(50);
-    auto ieor4540 = std::make_shared<Course>(60, "Krzysztof M Choromanski", "633 MUDD", "7:10-9:40");
+    auto ieor4540 =
+        std::make_shared<Course>(60, "Krzysztof M Choromanski", "633 MUDD", "7:10-9:40");
     ieor4540->setEnrolledStudentCount(33);
 
     courses.clear();
@@ -170,7 +171,8 @@ void MyApp::resetDataFile() {
     phys1221->setEnrolledStudentCount(118);
     auto phys1520 = std::make_shared<Course>(400, "Victor G. Moffat", "630 MUDD", times[1]);
     phys1520->setEnrolledStudentCount(400);
-    auto phys2000 = std::make_shared<Course>(100, "Frank E. L. Banta", "402 CHANDLER", "1:10-3:40");
+    auto phys2000 =
+        std::make_shared<Course>(100, "Frank E. L. Banta", "402 CHANDLER", "1:10-3:40");
     phys2000->setEnrolledStudentCount(98);
     auto phys3801 = std::make_shared<Course>(150, "Katherine M. McMahon", "603 MUDD", "4:10-5:25");
     phys3801->setEnrolledStudentCount(96);
