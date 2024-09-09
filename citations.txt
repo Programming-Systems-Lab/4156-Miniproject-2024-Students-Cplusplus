@@ -1,0 +1,4 @@
+GoogleTest
+https://google.github.io/googletest/primer.html
+
+https://cmake.org/cmake/help/latest/command/add_compile_options.html

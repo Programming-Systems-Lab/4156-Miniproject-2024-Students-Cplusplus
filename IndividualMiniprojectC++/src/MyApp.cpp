@@ -1,5 +1,8 @@
-#include "MyApp.h"
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University. All rights reserved.
 #include <iostream>
+
+#include "MyApp.h"
+
 
 MyFileDatabase* MyApp::myFileDatabase = nullptr;
 bool MyApp::saveData = false;

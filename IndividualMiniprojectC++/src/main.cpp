@@ -1,14 +1,17 @@
-#include "crow.h"
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University. All rights reserved.
+#include <iostream>
+#include <map>
+#include <string>
+#include <csignal>
+
+#include "crow.h" // NOLINT
 #include "Course.h"
 #include "Department.h"
 #include "MyFileDatabase.h"
 #include "RouteController.h"
 #include "Globals.h"
 #include "MyApp.h"
-#include <iostream>
-#include <map>
-#include <string>
-#include <csignal>
+
 
 /**
  *  Method to handle proper termination protocols 
