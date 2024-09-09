@@ -1,3 +1,4 @@
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University All rights reserved
 #include "Course.h"
 #include <iostream>
 #include <string>
