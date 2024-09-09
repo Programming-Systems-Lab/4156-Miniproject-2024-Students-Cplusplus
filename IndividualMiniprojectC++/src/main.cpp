@@ -4,7 +4,7 @@
 #include <string>
 #include <csignal>
 
-#include "Crow-1.2.0-Darwin/include/crow.h"
+#include "crow.h" // NOLINT
 #include "Course.h"
 #include "Department.h"
 #include "MyFileDatabase.h"
