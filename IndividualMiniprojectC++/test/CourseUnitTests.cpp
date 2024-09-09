@@ -1,4 +1,4 @@
-// Copyright 2024 Chun-Yao Hsieh @ Columbia University All rights reserved
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University. All rights reserved.
 #include <gtest/gtest.h>
 #include "Course.h" 
 

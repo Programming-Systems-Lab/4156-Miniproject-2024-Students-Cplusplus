@@ -1,4 +1,4 @@
-// Copyright 2024 Chun-Yao Hsieh @ Columbia University All rights reserved
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University. All rights reserved.
 #include "Department.h"
 #include "Course.h"
 #include <map>
