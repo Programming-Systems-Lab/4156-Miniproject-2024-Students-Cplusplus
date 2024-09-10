@@ -4,3 +4,4 @@ IndividualMiniprojectC++/external_libraries/Crow-1.2.0-Darwin
 IndividualMiniprojectC++/build/*
 !IndividualMiniprojectC++/build/README.txt
 !IndividualMiniprojectC++/external_libraries/README.txt
+IndividualMiniprojectC++/.DS_Store

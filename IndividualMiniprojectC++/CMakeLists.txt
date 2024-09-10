@@ -6,6 +6,9 @@ set(INCLUDE_PATHS external_libraries/boost_1_85_0 external_libraries/Crow-1.2.0-
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Add the compiler flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -fprofile-arcs -ftest-coverage -Wall -Werror")
+
 # Main project executable
 add_executable(IndividualMiniproject 
     src/main.cpp 

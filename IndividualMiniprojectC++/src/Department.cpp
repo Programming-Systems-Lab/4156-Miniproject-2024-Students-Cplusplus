@@ -17,7 +17,7 @@
  */
 Department::Department(std::string deptCode, std::map<std::string, std::shared_ptr<Course>> courses,
                        std::string departmentChair, int numberOfMajors)
-    : departmentChair(departmentChair), deptCode(deptCode), numberOfMajors(numberOfMajors), courses(courses) {}
+    : numberOfMajors(numberOfMajors), deptCode(deptCode), departmentChair(departmentChair), courses(courses) {}
 
 Department::Department() : numberOfMajors(0) {}
 
