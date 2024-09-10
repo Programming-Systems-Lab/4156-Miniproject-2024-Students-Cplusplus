@@ -6,9 +6,7 @@ class MyFileDatabaseTests : public ::testing::Test {
 protected:
     MyFileDatabaseTests(){
         // Data for COMS department
-        auto coms1004 = std::make_shared<Course>(400, "Adam Cannon", "417 IAB", "11:40-12:55");
         auto coms3251 = std::make_shared<Course>(125, "Tony Dear", "402 CHANDLER", "1:10-3:40");
-        courses["1004"] = coms1004;
         courses["3251"] = coms3251;
 
         department1 = new Department("COMS", courses, "Luca Carloni", 2700);
@@ -20,6 +18,18 @@ protected:
     Department* department1;
 };
 
-TEST_F(MyFileDatabaseTests, SetterTest) {
+TEST_F(MyFileDatabaseTests, GetterAndSetterTest) {
     database1.setMapping(departments);
+    std::map<std::string, Department> temp_departments;
+    temp_departments = database1.getDepartmentMapping();
+    EXPECT_EQ(temp_departments["COMS"].display(), departments["COMS"].display());
 }
+
+TEST_F(MyFileDatabaseTests, SaveAndReadContentsToFileTest) {
+    database1.setMapping(departments);
+    database1.saveContentsToFile();
+    MyFileDatabase database2{0, "database.bin"};
+    std::string expectedResult = "For the COMS department:\nCOMS 3251: \nInstructor: Tony Dear; Location: 402 CHANDLER; Time: 1:10-3:40\n\n";
+    ASSERT_EQ(expectedResult, database2.display());
+}
+
