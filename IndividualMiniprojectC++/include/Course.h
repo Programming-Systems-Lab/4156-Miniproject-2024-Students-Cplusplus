@@ -14,6 +14,8 @@ class Course {
         Course(int count, const std::string &instructorName, const std::string &courseLocation, const std::string &timeSlot);
         Course();
 
+        int getEnrollmentCapacity() const;
+        int getEnrolledStudentCount() const;
         std::string getCourseLocation() const;
         std::string getInstructorName() const;
         std::string getCourseTimeSlot() const;

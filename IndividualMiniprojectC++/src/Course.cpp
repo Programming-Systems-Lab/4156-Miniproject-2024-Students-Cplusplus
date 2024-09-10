@@ -41,11 +41,22 @@ bool Course::enrollStudent()
  */
 bool Course::dropStudent()
 {
-    if(enrolledStudentCount > 0){
+    if (enrolledStudentCount > 0)
+    {
         enrolledStudentCount--;
         return true;
     }
     return false;
+}
+
+int Course::getEnrolledStudentCount() const
+{
+    return enrolledStudentCount;
+}
+
+int Course::getEnrollmentCapacity() const
+{
+    return enrollmentCapacity;
 }
 
 std::string Course::getCourseLocation() const
