@@ -48,9 +48,11 @@ add_executable(IndividualMiniprojectTests
   test/CourseUnitTests.cpp
   test/DepartmentTests.cpp
   test/MyFileDatabaseTests.cpp
+  test/MyAppTests.cpp
   src/Course.cpp
   src/Department.cpp
   src/MyFileDatabase.cpp
+  src/MyApp.cpp
 )
 
 target_include_directories(IndividualMiniprojectTests PRIVATE 
