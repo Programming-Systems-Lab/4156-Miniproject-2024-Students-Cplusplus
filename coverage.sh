@@ -46,7 +46,6 @@ lcov --capture \
      --ignore-errors inconsistent,empty,unused,path \
      --include "$BASE_PATH/src/*" \
      --exclude "$BASE_PATH/include/*" \
-     --exclude "$BASE_PATH/v1/*"
 
 # Generate HTML report
 genhtml --filter range \
@@ -63,9 +62,9 @@ else
     echo "Coverage report generated at $COVERAGE_DIR/src/index.html"
 fi
 
-# Clean up
+# # Clean up
 find "$SRC_DIR" "$TEST_DIR" "$BUILD_DIR" \
-     -type f \( -name '*.gcno' -o -name '*.gcov' -o -name '*.gcda' -o -name '*.info' \) \
+     -type f \( -name '*.o' -o -name '*.gcno' -o -name '*.gcov' -o -name '*.gcda' -o -name '*.info' \) \
      -delete
 
 echo "Coverage analysis complete. Results saved in $BUILD_DIR/coverage.info"

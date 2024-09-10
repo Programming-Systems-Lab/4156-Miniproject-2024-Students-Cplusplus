@@ -7,3 +7,4 @@
 * dropStudent: enrolledStudentCount should not less than 0
 * getInstructorName: it should return instructorName
 * getCourseTimeSlot: it should return courseTimeSlot
+* reassignInstructor: delete output. no need to use this-> here 

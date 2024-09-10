@@ -45,7 +45,6 @@ enable_testing()
 
 # Test executable
 add_executable(IndividualMiniprojectTests
-  test/sample.cpp
   test/CourseUnitTests.cpp
   src/Course.cpp
   src/Department.cpp
@@ -79,7 +78,6 @@ if (CPPLINT)
         src/RouteController.cpp
         src/MyApp.cpp
         src/Globals.cpp
-        test/sample.cpp
         test/CourseUnitTests.cpp
     )
 

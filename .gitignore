@@ -5,3 +5,4 @@ IndividualMiniprojectC++/build/*
 !IndividualMiniprojectC++/build/README.txt
 !IndividualMiniprojectC++/external_libraries/README.txt
 IndividualMiniprojectC++/.DS_Store
+.vscode/settings.json
