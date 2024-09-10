@@ -2,11 +2,6 @@
 #include <gtest/gtest.h>
 #include "MyApp.h"
 
-// class MyAppTests : public ::testing::Test {
-// protected:
-    
-// };
-
 TEST(MyAppTests, RunTest) {
     MyApp::run("setup");
     MyApp::onTermination();
