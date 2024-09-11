@@ -1,12 +1,14 @@
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University. All rights reserved.
 #include <string>
 #include <map>
-#include "Course.h"
-#ifndef DEPARTMENT_H
-#define DEPARTMENT_H
-
-#include <map>
-#include <string>
 #include <memory>
+
+#include "Course.h"
+
+#ifndef INDIVIDUALMINIPROJECTC___INCLUDE_DEPARTMENT_H_
+#define INDIVIDUALMINIPROJECTC___INCLUDE_DEPARTMENT_H_
+
+
 
 class Department {
     public:
@@ -34,6 +36,4 @@ class Department {
         std::map<std::string, std::shared_ptr<Course>> courses;
 };
 
-
-
-#endif
+#endif // INDIVIDUALMINIPROJECTC___INCLUDE_DEPARTMENT_H_

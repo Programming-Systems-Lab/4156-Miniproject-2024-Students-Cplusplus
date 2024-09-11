@@ -84,7 +84,17 @@ if (CPPLINT)
         src/RouteController.cpp
         src/MyApp.cpp
         src/Globals.cpp
+        include/Course.h 
+        include/Department.h 
+        include/MyFileDatabase.h 
+        include/RouteController.h
+        include/MyApp.h
+        include/Globals.h
         test/CourseUnitTests.cpp
+        test/DepartmentTests.cpp
+        test/MyFileDatabaseTests.cpp
+        test/MyAppTests.cpp
+        test/RouteControllerTests.cpp
     )
 
     # Custom target to run cpplint

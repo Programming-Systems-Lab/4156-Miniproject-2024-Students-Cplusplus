@@ -1,6 +1,7 @@
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University. All rights reserved.
 #include <string>
-#ifndef COURSE_H
-#define COURSE_H
+#ifndef INDIVIDUALMINIPROJECTC___INCLUDE_COURSE_H_
+#define INDIVIDUALMINIPROJECTC___INCLUDE_COURSE_H_
 
 class Course {
     private:
@@ -34,4 +35,4 @@ class Course {
         void deserialize(std::istream& in);
 };
 
-#endif
+#endif // INDIVIDUALMINIPROJECTC___INCLUDE_COURSE_H_

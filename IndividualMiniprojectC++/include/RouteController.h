@@ -1,34 +1,35 @@
-#ifndef ROUTECONTROLLER_H
-#define ROUTECONTROLLER_H
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University. All rights reserved.
+#ifndef INDIVIDUALMINIPROJECTC___INCLUDE_ROUTECONTROLLER_H_
+#define INDIVIDUALMINIPROJECTC___INCLUDE_ROUTECONTROLLER_H_
 
-#include "crow.h"
-#include "Globals.h"
-#include "MyFileDatabase.h"
+#include "crow.h" // NOLINT
+#include "Globals.h" // NOLINT
+#include "MyFileDatabase.h" // NOLINT
 
 class RouteController {
     private:
         MyFileDatabase* myFileDatabase;
 
     public:
-        void initRoutes(crow::App<>& app);
+        void initRoutes(crow::App<>& app); // NOLINT
         void setDatabase(MyFileDatabase* db);
 
-        void index(crow::response& res);
-        void retrieveDepartment(const crow::request& req, crow::response& res);
-        void retrieveCourse(const crow::request& req, crow::response& res);
-        void isCourseFull(const crow::request& req, crow::response& res);
-        void getMajorCountFromDept(const crow::request& req, crow::response& res);
-        void identifyDeptChair(const crow::request& req, crow::response& res);
-        void findCourseLocation(const crow::request& req, crow::response& res);
-        void findCourseInstructor(const crow::request& req, crow::response& res);
-        void findCourseTime(const crow::request& req, crow::response& res);
-        void addMajorToDept(const crow::request& req, crow::response& res);
-        void removeMajorFromDept(const crow::request& req, crow::response& res);
-        void setEnrollmentCount(const crow::request& req, crow::response& res);
-        void setCourseLocation(const crow::request& req, crow::response& res);
-        void setCourseInstructor(const crow::request& req, crow::response& res);
-        void setCourseTime(const crow::request& req, crow::response& res);
-        void dropStudentFromCourse(const crow::request&, crow::response& res);
+        void index(crow::response& res); // NOLINT
+        void retrieveDepartment(const crow::request& req, crow::response& res); // NOLINT
+        void retrieveCourse(const crow::request& req, crow::response& res); // NOLINT
+        void isCourseFull(const crow::request& req, crow::response& res); // NOLINT
+        void getMajorCountFromDept(const crow::request& req, crow::response& res); // NOLINT
+        void identifyDeptChair(const crow::request& req, crow::response& res); // NOLINT
+        void findCourseLocation(const crow::request& req, crow::response& res); // NOLINT
+        void findCourseInstructor(const crow::request& req, crow::response& res); // NOLINT
+        void findCourseTime(const crow::request& req, crow::response& res); // NOLINT
+        void addMajorToDept(const crow::request& req, crow::response& res); // NOLINT
+        void removeMajorFromDept(const crow::request& req, crow::response& res); // NOLINT
+        void setEnrollmentCount(const crow::request& req, crow::response& res); // NOLINT
+        void setCourseLocation(const crow::request& req, crow::response& res); // NOLINT
+        void setCourseInstructor(const crow::request& req, crow::response& res); // NOLINT
+        void setCourseTime(const crow::request& req, crow::response& res); // NOLINT
+        void dropStudentFromCourse(const crow::request&, crow::response& res); // NOLINT
 };
 
-#endif 
+#endif // INDIVIDUALMINIPROJECTC___INCLUDE_ROUTECONTROLLER_H_

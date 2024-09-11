@@ -1,5 +1,6 @@
-#ifndef MYAPP_H
-#define MYAPP_H
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University. All rights reserved.
+#ifndef INDIVIDUALMINIPROJECTC___INCLUDE_MYAPP_H_
+#define INDIVIDUALMINIPROJECTC___INCLUDE_MYAPP_H_
 
 #include <string>
 #include <map>
@@ -22,4 +23,4 @@ class MyApp {
         static bool saveData;
 };
 
-#endif
+#endif // INDIVIDUALMINIPROJECTC___INCLUDE_MYAPP_H_

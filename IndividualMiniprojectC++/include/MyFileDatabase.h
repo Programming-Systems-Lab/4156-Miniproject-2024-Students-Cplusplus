@@ -1,9 +1,10 @@
+// Copyright 2024 Chun-Yao Hsieh @ Columbia University. All rights reserved.
 #include "Department.h"
 #include <map>
 #include <string>
 
-#ifndef MYFILEDATABASE_H
-#define MYFILEDATABASE_H
+#ifndef INDIVIDUALMINIPROJECTC___INCLUDE_MYFILEDATABASE_H_
+#define INDIVIDUALMINIPROJECTC___INCLUDE_MYFILEDATABASE_H_
 
 class MyFileDatabase {
     public:
@@ -21,4 +22,4 @@ class MyFileDatabase {
         std::string filePath;
 };
 
-#endif
+#endif // INDIVIDUALMINIPROJECTC___INCLUDE_MYFILEDATABASE_H_
