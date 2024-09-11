@@ -1,20 +1,24 @@
 # Bugs
 
-## General 
-*   src/MyApp.cpp and src/RouteController.cpp should be added to add_executable in cmakelists.txt
+## General
+* `src/MyApp.cpp` and `src/RouteController.cpp` should be added to `add_executable` in `CMakeLists.txt`
 
 ## Course.cpp
-* #include <string>: Duplicate include
-* Constructor: enrolledStudentCount should be 0 when the class being constructed
-* enrollStudent: does not check the capcity and always return false
-* isCourseFull: the logic should be inverted
-* dropStudent: enrolledStudentCount should not less than 0
-* getInstructorName: it should return instructorName
-* getCourseTimeSlot: it should return courseTimeSlot
-* reassignInstructor: delete output. no need to use this-> here
+1. Remove duplicate `#include <string>`
+2. Constructor: Initialize `enrolledStudentCount` to 0
+3. `enrollStudent()`: 
+   - Add capacity check
+   - Fix return value (currently always returns `false`)
+4. `isCourseFull()`: Invert the logic
+5. `dropStudent()`: Ensure `enrolledStudentCount` doesn't go below 0
+6. `getInstructorName()`: Should return `instructorName`
+7. `getCourseTimeSlot()`: Should return `courseTimeSlot`
+8. `reassignInstructor()`: 
+   - Remove `cout` statement
+   - Remove unnecessary `this->` usage
 
 ## Department.cpp
-* #include <map>: Duplicate include
-* #include <string>: Duplicate include
-* getDepartmentChair: Should return departmentChair not string "departmentChair"
-* dropPersonFromMajor: Should make sure numberOfMajors no less than 0
+1. Remove duplicate `#include <map>`
+2. Remove duplicate `#include <string>`
+3. `getDepartmentChair()`: Return `departmentChair` instead of the string literal `"departmentChair"`
+4. `dropPersonFromMajor()`: Ensure `numberOfMajors` doesn't go below 0
