@@ -1,5 +1,8 @@
 # Bugs
 
+## General 
+*   src/MyApp.cpp and src/RouteController.cpp should be added to add_executable in cmakelists.txt
+
 ## Course.cpp
 * #include <string>: Duplicate include
 * Constructor: enrolledStudentCount should be 0 when the class being constructed

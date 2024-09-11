@@ -23,6 +23,12 @@ SRC_DIR="$BUILD_DIR/CMakeFiles/IndividualMiniprojectTests.dir/src"
 TEST_DIR="$BUILD_DIR/CMakeFiles/IndividualMiniprojectTests.dir/test"
 COVERAGE_DIR="$SRC_DIR/code_coverage"
 
+
+# # Clean up
+find "$SRC_DIR" "$TEST_DIR" "$BUILD_DIR" \
+     -type f \( -name '*.o' -o -name '*.gcno' -o -name '*.gcov' -o -name '*.gcda' -o -name '*.info' \) \
+     -delete
+
 # Compile the project
 make -C "$BUILD_DIR" || { echo "Compilation failed"; exit 1; }
 

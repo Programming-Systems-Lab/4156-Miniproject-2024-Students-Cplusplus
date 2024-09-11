@@ -152,7 +152,6 @@ void RouteController::isCourseFull(const crow::request& req, crow::response& res
 void RouteController::getMajorCountFromDept(const crow::request& req, crow::response& res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
-
         auto departmentMapping = myFileDatabase->getDepartmentMapping();
         auto deptIt = departmentMapping.find(deptCode);
 
