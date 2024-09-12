@@ -1,0 +1,5 @@
+This link gave me the idea to use lcov and integrate it with CMake
+https://danielsieger.com/blog/2022/03/06/code-coverage-for-cpp.html
+
+This link gave me the code to get rid of unwanted files in the lcov report
+https://www.reddit.com/r/cpp_questions/comments/16uapml/gcov_command_to_exclude_files_from_coverage/
