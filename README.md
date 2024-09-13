@@ -25,6 +25,18 @@ CMakeLists when building if you want it to be done faster.
     cmake -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-14 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-14 ..
     make
 
+    gcovr --root .. \
+      --object-directory . \
+      --gcov-executable /opt/homebrew/bin/gcov-14 \
+      --html --html-details \
+      -o coverage.html \
+      -v
+
+    open coverage.html
+
+    "rm -rf *" in the build directory for new builds if trying to run code coverage tests again.
+    **Keep in mind that my mac is apple silicon, so the installation directories may differ if using an older model.
+
 CODE EXPLANATION:
 
 
