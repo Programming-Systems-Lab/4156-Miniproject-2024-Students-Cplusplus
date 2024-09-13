@@ -3,26 +3,28 @@ cmake_minimum_required(VERSION 3.15)
 project(IndividualMiniproject)
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "13.6")
-
 set(INCLUDE_PATHS external_libraries/boost_1_86_0 external_libraries/Crow/include)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_BUILD_TYPE Debug)
 
-set(CMAKE_C_COMPILER "/opt/homebrew/opt/llvm/bin/clang")
-set(CMAKE_CXX_COMPILER "/opt/homebrew/opt/llvm/bin/clang++")
 
 #clang-tidy (remove this and the if conditional directly below if you don't want to use clang-tidy)
-find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
+#find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
 
-if(CLANG_TIDY_EXE)
-    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=*;-header-filter=^${CMAKE_SOURCE_DIR}/IndividualMiniprojectC++/src/.*")
-endif()
+#if(CLANG_TIDY_EXE)
+    #set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=*;-header-filter=^${CMAKE_SOURCE_DIR}/IndividualMiniprojectC++/src/.*")
+#endif()
 
 # Code coverage
-if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-instr-generate -fcoverage-mapping")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-instr-generate -fcoverage-mapping")
+set(CMAKE_BUILD_TYPE Debug)  # Ensure debug build for coverage
+
+# Use GCC for coverage
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    message("Using GCC for code coverage")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g -fprofile-arcs -ftest-coverage")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-arcs -ftest-coverage")
 endif()
+
 
 
 # Main project executable

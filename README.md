@@ -18,7 +18,12 @@ the build directory. Usage of clang-tidy drastically slows down the build proces
 CMakeLists when building if you want it to be done faster. 
 
 
-- Used clang for coverage analysis
+- Used gcc for coverage analysis
+    pip install govr
+    brew install gcc
+    Navigate to build directory, then:
+    cmake -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-14 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-14 ..
+    make
 
 CODE EXPLANATION:
 
