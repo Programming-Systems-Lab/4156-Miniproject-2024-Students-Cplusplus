@@ -1,5 +1,7 @@
-#include <gtest/gtest.h>
+/* Copyright 2024 Vidushi Bansal */
+
 #include "Course.h" 
+#include <gtest/gtest.h>
 
 class CourseUnitTests : public ::testing::Test {
 protected:
