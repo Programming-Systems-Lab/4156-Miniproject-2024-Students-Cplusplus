@@ -1,17 +1,17 @@
 #include <string>
 #include <map>
 #include "Course.h"
-#ifndef DEPARTMENT_H
-#define DEPARTMENT_H
-
-#include <map>
-#include <string>
 #include <memory>
 
+#pragma once
+
+using String_to_Course = std::map<std::string, std::shared_ptr<Course>>;
+
 class Department {
-    public:
-        Department(std::string deptCode, std::map<std::string, std::shared_ptr<Course>> courses,
-                std::string departmentChair, int numberOfMajors);
+ public:
+        Department(std::string deptCode, std::map<std::string,
+                 std::shared_ptr<Course>> courses,
+                 std::string departmentChair, int numberOfMajors);
 
         Department();
 
@@ -21,19 +21,16 @@ class Department {
         void addPersonToMajor();
         void dropPersonFromMajor();
         void addCourse(std::string courseId, std::shared_ptr<Course> course);
-        void createCourse(std::string courseId, std::string instructorName, std::string courseLocation,
+        void createCourse(std::string courseId,
+                        std::string instructorName, std::string courseLocation,
                         std::string courseTimeSlot, int capacity);
         std::string display() const;
         std::string getDepartmentChair() const;
-        std::map<std::string, std::shared_ptr<Course>> getCourseSelection() const;
+        String_to_Course getCourseSelection() const;
 
-    private:
+ private:
         int numberOfMajors;
         std::string deptCode;
         std::string departmentChair;
-        std::map<std::string, std::shared_ptr<Course>> courses;
+        String_to_Course courses;
 };
-
-
-
-#endif

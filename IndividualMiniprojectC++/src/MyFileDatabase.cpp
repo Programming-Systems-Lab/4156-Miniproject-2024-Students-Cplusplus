@@ -9,7 +9,8 @@
  * @param flag     used to distinguish mode of database
  * @param filePath the path to the file containing the entries of the database
  */
-MyFileDatabase::MyFileDatabase(int flag, const std::string& filePath) : filePath(filePath) {
+MyFileDatabase::MyFileDatabase(int flag,
+ const std::string& filePath) : filePath(filePath) {
     if (flag == 0) {
         deSerializeObjectFromFile();
     }
@@ -20,7 +21,8 @@ MyFileDatabase::MyFileDatabase(int flag, const std::string& filePath) : filePath
  *
  * @param mapping the mapping of department names to Department objects
  */
-void MyFileDatabase::setMapping(const std::map<std::string, Department>& mapping) {
+void MyFileDatabase::setMapping(const std::map<std::string,
+ Department>& mapping) {
     departmentMapping = mapping;
 }
 
@@ -64,7 +66,7 @@ void MyFileDatabase::deSerializeObjectFromFile() {
         inFile.read(reinterpret_cast<char*>(&keyLen), sizeof(keyLen));
         std::string key(keyLen, ' ');
         inFile.read(&key[0], keyLen);
-        Department dept; 
+        Department dept;
         dept.deserialize(inFile);
         departmentMapping[key] = dept;
     }
@@ -79,7 +81,8 @@ void MyFileDatabase::deSerializeObjectFromFile() {
 std::string MyFileDatabase::display() const {
     std::string result;
     for (const auto& it : departmentMapping) {
-        result += "For the " + it.first + " department:\n" + it.second.display() + "\n";
+        result += "For the " + it.first +
+        " department:\n" + it.second.display() + "\n";
     }
     return result;
 }

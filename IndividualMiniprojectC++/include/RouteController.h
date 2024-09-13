@@ -1,34 +1,36 @@
-#ifndef ROUTECONTROLLER_H
-#define ROUTECONTROLLER_H
+#pragma once
 
-#include "crow.h"
+#include "../external_libraries/Crow/include/crow.h"
 #include "Globals.h"
 #include "MyFileDatabase.h"
 
-class RouteController {
-    private:
-        MyFileDatabase* myFileDatabase;
+using Response = crow::response&;
+using Request = const::crow::request&;
+using App = crow::App<>&;
 
-    public:
-        void initRoutes(crow::App<>& app);
+class RouteController {
+ private:
+        MyFileDatabase* myFileDatabase;
+ public:
+        void initRoutes(App app);
         void setDatabase(MyFileDatabase* db);
 
-        void index(crow::response& res);
-        void retrieveDepartment(const crow::request& req, crow::response& res);
-        void retrieveCourse(const crow::request& req, crow::response& res);
-        void isCourseFull(const crow::request& req, crow::response& res);
-        void getMajorCountFromDept(const crow::request& req, crow::response& res);
-        void identifyDeptChair(const crow::request& req, crow::response& res);
-        void findCourseLocation(const crow::request& req, crow::response& res);
-        void findCourseInstructor(const crow::request& req, crow::response& res);
-        void findCourseTime(const crow::request& req, crow::response& res);
-        void addMajorToDept(const crow::request& req, crow::response& res);
-        void removeMajorFromDept(const crow::request& req, crow::response& res);
-        void setEnrollmentCount(const crow::request& req, crow::response& res);
-        void setCourseLocation(const crow::request& req, crow::response& res);
-        void setCourseInstructor(const crow::request& req, crow::response& res);
-        void setCourseTime(const crow::request& req, crow::response& res);
-        void dropStudentFromCourse(const crow::request&, crow::response& res);
+        void index(Response res);
+        void retrieveDepartment(Request req, Response res);
+        void retrieveCourse(Request req, Response res);
+        void isCourseFull(Request req, Response res);
+        void getMajorCountFromDept(Request req, Response res);
+        void identifyDeptChair(Request req, Response res);
+        void findCourseLocation(Request req, Response res);
+        void findCourseInstructor(Request req, Response res);
+        void findCourseTime(Request req, Response res);
+        void addMajorToDept(Request req, Response res);
+        void removeMajorFromDept(Request req, Response res);
+        void setEnrollmentCount(Request req, Response res);
+        void setCourseLocation(Request req, Response res);
+        void setCourseInstructor(Request req, Response res);
+        void setCourseTime(Request req, Response res);
+        void dropStudentFromCourse(Request, Response res);
 };
 
-#endif 
+

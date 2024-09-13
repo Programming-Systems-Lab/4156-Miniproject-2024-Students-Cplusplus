@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.15)
 
 project(IndividualMiniproject)
 
-set(INCLUDE_PATHS external_libraries/boost_1_85_0 external_libraries/Crow-1.2.0-Darwin/include)
-set(CMAKE_CXX_STANDARD 14)
+set(INCLUDE_PATHS external_libraries/boost_1_86_0 external_libraries/Crow/include)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Main project executable

@@ -14,9 +14,11 @@
  * @param departmentChair  The name of the department chair.
  * @param numberOfMajors   The number of majors in the department.
  */
-Department::Department(std::string deptCode, std::map<std::string, std::shared_ptr<Course>> courses,
-                       std::string departmentChair, int numberOfMajors)
-    : departmentChair(departmentChair), deptCode(deptCode), numberOfMajors(numberOfMajors), courses(courses) {}
+Department::Department(std::string deptCode, std::map<std::string,
+                        std::shared_ptr<Course>> courses,
+                        std::string departmentChair, int numberOfMajors)
+    : departmentChair(departmentChair), deptCode(deptCode),
+    numberOfMajors(numberOfMajors), courses(courses) {}
 
 Department::Department() : numberOfMajors(0) {}
 
@@ -35,7 +37,7 @@ int Department::getNumberOfMajors() const {
  * @return The name of the department chair.
  */
 std::string Department::getDepartmentChair() const {
-    return "departmentChair"; 
+    return "departmentChair";
 }
 
 /**
@@ -43,7 +45,7 @@ std::string Department::getDepartmentChair() const {
  *
  * @return A HashMap containing courses offered by the department.
  */
-std::map<std::string, std::shared_ptr<Course>> Department::getCourseSelection() const {
+String_to_Course Department::getCourseSelection() const {
     return courses;
 }
 
@@ -67,7 +69,8 @@ void Department::dropPersonFromMajor() {
  * @param courseId The ID of the course to add.
  * @param course   The Course object to add.
  */
-void Department::addCourse(std::string courseId, std::shared_ptr<Course> course) {
+void Department::addCourse(std::string courseId,
+ std::shared_ptr<Course> course) {
     courses[courseId] = course;
 }
 
@@ -80,9 +83,12 @@ void Department::addCourse(std::string courseId, std::shared_ptr<Course> course)
  * @param courseTimeSlot     The time slot of the course.
  * @param capacity           The maximum number of students that can enroll in the course.
  */
-void Department::createCourse(std::string courseId, std::string instructorName, std::string courseLocation,
+void Department::createCourse(std::string courseId, std::string instructorName,
+                              std::string courseLocation,
                               std::string courseTimeSlot, int capacity) {
-    std::shared_ptr<Course> newCourse = std::make_shared<Course>(capacity, instructorName, courseLocation, courseTimeSlot);
+    std::shared_ptr<Course> newCourse =
+    std::make_shared<Course>(capacity, instructorName,
+    courseLocation, courseTimeSlot);
     addCourse(courseId, newCourse);
 }
 
@@ -94,9 +100,10 @@ void Department::createCourse(std::string courseId, std::string instructorName, 
 std::string Department::display() const {
     std::ostringstream result;
     for (const auto& it : courses) {
-        result << deptCode << " " << it.first << ": " << it.second->display() << "\n";
+        result << deptCode << " " <<
+        it.first << ": " << it.second->display() << "\n";
     }
-    return result.str(); 
+    return result.str();
 }
 
 void Department::serialize(std::ostream& out) const {
@@ -108,13 +115,15 @@ void Department::serialize(std::ostream& out) const {
     out.write(reinterpret_cast<const char*>(&chairLen), sizeof(chairLen));
     out.write(departmentChair.c_str(), chairLen);
 
-    out.write(reinterpret_cast<const char*>(&numberOfMajors), sizeof(numberOfMajors));
+    out.write(reinterpret_cast<const char*>(&numberOfMajors),
+    sizeof(numberOfMajors));
 
     size_t mapSize = courses.size();
     out.write(reinterpret_cast<const char*>(&mapSize), sizeof(mapSize));
     for (const auto& it : courses) {
         size_t courseIdLen = it.first.length();
-        out.write(reinterpret_cast<const char*>(&courseIdLen), sizeof(courseIdLen));
+        out.write(reinterpret_cast<const char*>(&courseIdLen),
+        sizeof(courseIdLen));
         out.write(it.first.c_str(), courseIdLen);
         it.second->serialize(out);
     }

@@ -1,11 +1,12 @@
-#include "RouteController.h"
-#include "Globals.h"
-#include "MyFileDatabase.h"
-#include "crow.h"
 #include <map>
 #include <string>
 #include <exception>
 #include <iostream>
+#include "RouteController.h"
+#include "Globals.h"
+#include "MyFileDatabase.h"
+#include "../external_libraries/Crow/include/crow.h"
+
 
 // Utility function to handle exceptions
 crow::response handleException(const std::exception& e) {
@@ -18,9 +19,12 @@ crow::response handleException(const std::exception& e) {
  *
  * @return A string containing the name of the html file to be loaded.
  */
-void RouteController::index(crow::response& res) {
-    res.write("Welcome, in order to make an API call direct your browser or Postman to an endpoint "
-              "\n\n This can be done using the following format: \n\n http://127.0.0.1:8080/endpoint?arg=value");
+void RouteController::index(Response res) {
+    std::string message1 = "Welcome, in order to make an API call direct";
+    std::string message2 = "your browser or Postman to an endpoint ";
+    std::string message3 = "\n\n This can be done using the following format: ";
+    std::string message4 = "\n\n http://127.0.0.1:8080/endpoint?arg=value";
+    res.write(message1 + message2 + message3 + message4);
     res.end();
 }
 
@@ -33,7 +37,7 @@ void RouteController::index(crow::response& res) {
  * @return A crow::response object containing either the details of the Department and
  *         an HTTP 200 response or, an appropriate message indicating the proper response.
  */
-void RouteController::retrieveDepartment(const crow::request& req, crow::response& res) {
+void RouteController::retrieveDepartment(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto departmentMapping = myFileDatabase->getDepartmentMapping();
@@ -44,7 +48,8 @@ void RouteController::retrieveDepartment(const crow::request& req, crow::respons
             res.write("Department Not Found");
         } else {
             res.code = 200;
-            res.write(it->second.display()); // Use dot operator to access method
+            res.write(it->second.display());
+            // Use dot operator to access method
         }
         res.end();
     } catch (const std::exception& e) {
@@ -66,7 +71,7 @@ void RouteController::retrieveDepartment(const crow::request& req, crow::respons
  *                   course and an HTTP 200 response or, an appropriate message indicating the
  *                   proper response.
  */
-void RouteController::retrieveCourse(const crow::request& req, crow::response& res) {
+void RouteController::retrieveCourse(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCode = std::stoi(req.url_params.get("courseCode"));
@@ -86,7 +91,8 @@ void RouteController::retrieveCourse(const crow::request& req, crow::response& r
                 res.write("Course Not Found");
             } else {
                 res.code = 200;
-                res.write(courseIt->second->display()); // Use dot operator to access method
+                res.write(courseIt->second->display());
+                // Use dot operator to access method
             }
         }
         res.end();
@@ -108,7 +114,7 @@ void RouteController::retrieveCourse(const crow::request& req, crow::response& r
  *                   and an HTTP 200 response or, an appropriate message indicating the proper
  *                   response.
  */
-void RouteController::isCourseFull(const crow::request& req, crow::response& res) {
+void RouteController::isCourseFull(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCode = std::stoi(req.url_params.get("courseCode"));
@@ -129,7 +135,8 @@ void RouteController::isCourseFull(const crow::request& req, crow::response& res
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write(course->isCourseFull() ? "true" : "false"); // Use dot operator to call method
+                res.write(course->isCourseFull() ? "true" : "false");
+                // Use dot operator to call method
             }
         }
         res.end();
@@ -148,7 +155,7 @@ void RouteController::isCourseFull(const crow::request& req, crow::response& res
  *                     specified department and an HTTP 200 response or, an appropriate message
  *                     indicating the proper response.
  */
-void RouteController::getMajorCountFromDept(const crow::request& req, crow::response& res) {
+void RouteController::getMajorCountFromDept(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
 
@@ -160,7 +167,10 @@ void RouteController::getMajorCountFromDept(const crow::request& req, crow::resp
             res.write("Department Not Found");
         } else {
             res.code = 200;
-            res.write("There are: " + std::to_string(deptIt->second.getNumberOfMajors()) + " majors in the department"); // Use dot operator to call method
+            auto nums = deptIt->second.getNumberOfMajors();
+            std::string numMajors = std::to_string(nums);
+            res.write("There are: " + numMajors + " majors in the department");
+            // Use dot operator to call method
         }
         res.end();
     } catch (const std::exception& e) {
@@ -178,7 +188,7 @@ void RouteController::getMajorCountFromDept(const crow::request& req, crow::resp
  *                  specified department and an HTTP 200 response or, an appropriate message
  *                  indicating the proper response.
  */
-void RouteController::identifyDeptChair(const crow::request& req, crow::response& res) {
+void RouteController::identifyDeptChair(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
 
@@ -190,7 +200,9 @@ void RouteController::identifyDeptChair(const crow::request& req, crow::response
             res.write("Department Not Found");
         } else {
             res.code = 200;
-            res.write(deptIt->second.getDepartmentChair() + " is the department chair."); // Use dot operator to call method
+            std::string deptChair = deptIt->second.getDepartmentChair();
+            res.write(deptChair + " is the department chair.");
+            // Use dot operator to call method
         }
         res.end();
     } catch (const std::exception& e) {
@@ -211,7 +223,7 @@ void RouteController::identifyDeptChair(const crow::request& req, crow::response
  *                   course and an HTTP 200 response or, an appropriate message indicating the
  *                   proper response.
  */
-void RouteController::findCourseLocation(const crow::request& req, crow::response& res) {
+void RouteController::findCourseLocation(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCode = std::stoi(req.url_params.get("courseCode"));
@@ -232,7 +244,9 @@ void RouteController::findCourseLocation(const crow::request& req, crow::respons
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write(course->getCourseLocation() + " is where the course is located."); // Use dot operator to call method
+                std::string courseLocation = course->getCourseLocation();
+                res.write(courseLocation + " is where the course is located.");
+                // Use dot operator to call method
             }
         }
         res.end();
@@ -254,7 +268,7 @@ void RouteController::findCourseLocation(const crow::request& req, crow::respons
  *                   an HTTP 200 response or, an appropriate message indicating the proper
  *                   response.
  */
-void RouteController::findCourseInstructor(const crow::request& req, crow::response& res) {
+void RouteController::findCourseInstructor(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCode = std::stoi(req.url_params.get("courseCode"));
@@ -275,7 +289,9 @@ void RouteController::findCourseInstructor(const crow::request& req, crow::respo
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write(course->getInstructorName() + " is the instructor for the course."); // Use dot operator to call method
+                std::string instructor = course->getInstructorName();
+                res.write(instructor + " is the instructor for the course.");
+                // Use dot operator to call method
             }
         }
         res.end();
@@ -297,7 +313,7 @@ void RouteController::findCourseInstructor(const crow::request& req, crow::respo
  *                   course timeslot and an HTTP 200 response or, an appropriate message
  *                   indicating the proper response.
  */
-void RouteController::findCourseTime(const crow::request& req, crow::response& res) {
+void RouteController::findCourseTime(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCode = std::stoi(req.url_params.get("courseCode"));
@@ -318,7 +334,8 @@ void RouteController::findCourseTime(const crow::request& req, crow::response& r
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write("The course meets at: " + course->getCourseTimeSlot()); 
+                std::string timeSlot = course->getCourseTimeSlot();
+                res.write("The course meets at: " + timeSlot);
             }
         }
         res.end();
@@ -336,7 +353,7 @@ void RouteController::findCourseTime(const crow::request& req, crow::response& r
  *                       response with an appropriate message or the proper status
  *                       code in tune with what has happened.
  */
-void RouteController::addMajorToDept(const crow::request& req, crow::response& res) {
+void RouteController::addMajorToDept(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
 
@@ -347,7 +364,8 @@ void RouteController::addMajorToDept(const crow::request& req, crow::response& r
             res.code = 404;
             res.write("Department Not Found");
         } else {
-            deptIt->second.addPersonToMajor(); // Use dot operator to call method
+            deptIt->second.addPersonToMajor();
+            // Use dot operator to call method
             res.code = 200;
             res.write("Attribute was updated successfully");
         }
@@ -358,7 +376,7 @@ void RouteController::addMajorToDept(const crow::request& req, crow::response& r
 }
 
 // Set Enrollment Count
-void RouteController::setEnrollmentCount(const crow::request& req, crow::response& res) {
+void RouteController::setEnrollmentCount(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCode = std::stoi(req.url_params.get("courseCode"));
@@ -390,7 +408,7 @@ void RouteController::setEnrollmentCount(const crow::request& req, crow::respons
 }
 
 // Set Course Location
-void RouteController::setCourseLocation(const crow::request& req, crow::response& res) {
+void RouteController::setCourseLocation(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCode = std::stoi(req.url_params.get("courseCode"));
@@ -421,14 +439,13 @@ void RouteController::setCourseLocation(const crow::request& req, crow::response
     }
 }
 
-void RouteController::setCourseInstructor(const crow::request& req, crow::response& res) {
+void RouteController::setCourseInstructor(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCodeStr = req.url_params.get("courseCode");
         auto instructor = req.url_params.get("instructor");
 
         int courseCode = std::stoi(courseCodeStr);
-    
         auto departmentMapping = myFileDatabase->getDepartmentMapping();
         auto deptIt = departmentMapping.find(deptCode);
 
@@ -455,7 +472,7 @@ void RouteController::setCourseInstructor(const crow::request& req, crow::respon
 }
 
 // Set Course Time
-void RouteController::setCourseTime(const crow::request& req, crow::response& res) {
+void RouteController::setCourseTime(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCode = std::stoi(req.url_params.get("courseCode"));
@@ -496,7 +513,7 @@ void RouteController::setCourseTime(const crow::request& req, crow::response& re
  *                       response with an appropriate message or the proper status
  *                       code in tune with what has happened.
  */
-void RouteController::removeMajorFromDept(const crow::request& req, crow::response& res) {
+void RouteController::removeMajorFromDept(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
 
@@ -529,7 +546,7 @@ void RouteController::removeMajorFromDept(const crow::request& req, crow::respon
  *                       response with an appropriate message or the proper status
  *                       code in tune with what has happened.
  */
-void RouteController::dropStudentFromCourse(const crow::request& req, crow::response& res) {
+void RouteController::dropStudentFromCourse(Request req, Response res) {
     try {
         auto deptCode = req.url_params.get("deptCode");
         auto courseCode = std::stoi(req.url_params.get("courseCode"));
@@ -551,10 +568,10 @@ void RouteController::dropStudentFromCourse(const crow::request& req, crow::resp
                 bool isStudentDropped = courseIt->second->dropStudent();
                 if (isStudentDropped) {
                     res.code = 200;
-                    res.write("Student has been dropped"); 
+                    res.write("Student has been dropped");
                 } else {
                     res.code = 400;
-                    res.write("Student has not been dropped"); 
+                    res.write("Student has not been dropped");
                 }
             }
         }
@@ -565,79 +582,79 @@ void RouteController::dropStudentFromCourse(const crow::request& req, crow::resp
 }
 
 // Initialize API Routes
-void RouteController::initRoutes(crow::App<>& app) {
+void RouteController::initRoutes(App app) {
     CROW_ROUTE(app, "/")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             index(res);
         });
 
     CROW_ROUTE(app, "/retrieveDept")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             retrieveDepartment(req, res);
         });
 
     CROW_ROUTE(app, "/retrieveCourse")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             retrieveCourse(req, res);
         });
 
     CROW_ROUTE(app, "/isCourseFull")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             isCourseFull(req, res);
         });
 
     CROW_ROUTE(app, "/getMajorCountFromDept")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             getMajorCountFromDept(req, res);
         });
 
     CROW_ROUTE(app, "/idDeptChair")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             identifyDeptChair(req, res);
         });
 
     CROW_ROUTE(app, "/findCourseLocation")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             findCourseLocation(req, res);
         });
 
     CROW_ROUTE(app, "/findCourseInstructor")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             findCourseInstructor(req, res);
         });
 
     CROW_ROUTE(app, "/findCourseTime")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             findCourseTime(req, res);
         });
 
     CROW_ROUTE(app, "/addMajorToDept")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             addMajorToDept(req, res);
         });
 
     CROW_ROUTE(app, "/removeMajorFromDept")
-        .methods(crow::HTTPMethod::GET)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
             removeMajorFromDept(req, res);
         });
 
     CROW_ROUTE(app, "/changeCourseLocation")
-        .methods(crow::HTTPMethod::PATCH)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::PATCH)([this](Request req, Response res) {
             setCourseLocation(req, res);
         });
 
     CROW_ROUTE(app, "/changeCourseTeacher")
-        .methods(crow::HTTPMethod::PATCH)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::PATCH)([this](Request req, Response res) {
             setCourseInstructor(req, res);
         });
 
     CROW_ROUTE(app, "/changeCourseTime")
-        .methods(crow::HTTPMethod::PATCH)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::PATCH)([this](Request req, Response res) {
             setCourseTime(req, res);
         });
 
     CROW_ROUTE(app, "/setEnrollmentCount")
-        .methods(crow::HTTPMethod::PATCH)([this](const crow::request& req, crow::response& res) {
+        .methods(crow::HTTPMethod::PATCH)([this](Request req, Response res) {
             setEnrollmentCount(req, res);
         });
 }

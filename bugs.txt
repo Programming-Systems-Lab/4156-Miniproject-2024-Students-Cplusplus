@@ -1,0 +1,4 @@
+Course.cpp:
+    - The enrollStudent() function and dropStudent() functions in Course.cpp were always returning false, without considerating whether
+the enrolled student count would be greater than the enrollment capacity. 
+    - The dropStudent() function does not check whether the enrolledStudentCount is already at 0. 

@@ -1,17 +1,18 @@
 #include <string>
-#ifndef COURSE_H
-#define COURSE_H
+
+#pragma once
 
 class Course {
-    private:
+ private:
         int enrollmentCapacity;
         int enrolledStudentCount;
         std::string courseLocation;
         std::string instructorName;
         std::string courseTimeSlot;
-    
-    public:
-        Course(int count, const std::string &instructorName, const std::string &courseLocation, const std::string &timeSlot);
+
+ public:
+        Course(int count, const std::string &instructorName,
+        const std::string &courseLocation, const std::string &timeSlot);
         Course();
 
         std::string getCourseLocation() const;
@@ -31,5 +32,3 @@ class Course {
         void serialize(std::ostream& out) const;
         void deserialize(std::istream& in);
 };
-
-#endif
