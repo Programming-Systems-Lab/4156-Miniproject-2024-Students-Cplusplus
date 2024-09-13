@@ -1,4 +1,28 @@
 Course.cpp:
-    - The enrollStudent() function and dropStudent() functions in Course.cpp were always returning false, without considerating whether
-the enrolled student count would be greater than the enrollment capacity. 
-    - The dropStudent() function does not check whether the enrolledStudentCount is already at 0. 
+
+- The enrollStudent() function and dropStudent() functions in Course.cpp were always returning false, without considerating whether
+the enrolled student count would be greater than the enrollment capacity. Added a check to see if 
+enrolledStudentCount < enrollmentCapacity and if true, then returns true after incrementing enrolledStudentCount.
+
+- The dropStudent() function does not check whether the enrolledStudentCount is already at 0. It always returns false no matter what,
+    so aded an if statement to check if enrolledStudentCount > 0 to fix this issue. 
+
+- warning: warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+    Fixed this issue by converting size_t to std::streamsize by casting.
+
+
+Department.cpp:
+- The getDepartmentChair() function was not functioning properly; it was simply returning the string "departmentChair", rather than
+    the actual department chair's name. Fixed by returning the variable departmentChair.
+
+- The dropPersonFromMajor() function did not have a check to see if the number of majors are greater than 0 before subtracting 1 from
+    the variable numberOfMajors. Added a conditional to check for this to be true before the subtraction occured. 
+
+- warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  Lines 112, 116, 127, 136, 141, 151
+   Fixed by converting size_t to std::streamsize.
+
+MyFileDatabase.cpp:
+- warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+   Lines 49, 68
+    Fixed by converting size_t to std::streamsize.

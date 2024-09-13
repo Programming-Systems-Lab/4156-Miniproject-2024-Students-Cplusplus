@@ -31,7 +31,13 @@ Course::Course() : enrollmentCapacity(0), enrolledStudentCount(0),
  * @return true if the student is successfully enrolled, false otherwise.
  */
 bool Course::enrollStudent() {
-    enrolledStudentCount++;
+    if (enrollmentCapacity != 0) {
+        if (enrolledStudentCount < enrollmentCapacity) {
+            enrolledStudentCount++;
+            return true;
+        }
+    }
+
     return false;
 }
 
@@ -41,7 +47,10 @@ bool Course::enrollStudent() {
  * @return true if the student is successfully dropped, false otherwise.
  */
 bool Course::dropStudent() {
-    enrolledStudentCount--;
+    if (enrolledStudentCount > 0) {
+        enrolledStudentCount--;
+        return true;
+    }
     return false;
 }
 
@@ -92,19 +101,25 @@ void Course::serialize(std::ostream& out) const {
     sizeof(enrolledStudentCount));
 
     size_t locationLen = courseLocation.length();
+    std::streamsize locationLenStreamSize =
+    static_cast<std::streamsize>(locationLen);
     out.write(reinterpret_cast<const char*>(&locationLen),
     sizeof(locationLen));
-    out.write(courseLocation.c_str(), locationLen);
+    out.write(courseLocation.c_str(), locationLenStreamSize);
 
     size_t instructorLen = instructorName.length();
+    std::streamsize instructorLenStreamSize =
+    static_cast<std::streamsize>(instructorLen);
     out.write(reinterpret_cast<const char*>(&instructorLen),
     sizeof(instructorLen));
-    out.write(instructorName.c_str(), instructorLen);
+    out.write(instructorName.c_str(), instructorLenStreamSize);
 
     size_t timeSlotLen = courseTimeSlot.length();
+    std::streamsize timeSlotLenStreamSize =
+    static_cast<std::streamsize>(timeSlotLen);
     out.write(reinterpret_cast<const char*>(&timeSlotLen),
     sizeof(timeSlotLen));
-    out.write(courseTimeSlot.c_str(), timeSlotLen);
+    out.write(courseTimeSlot.c_str(), timeSlotLenStreamSize);
 }
 
 void Course::deserialize(std::istream& in) {
@@ -113,19 +128,19 @@ void Course::deserialize(std::istream& in) {
     in.read(reinterpret_cast<char*>(&enrolledStudentCount),
     sizeof(enrolledStudentCount));
 
-    size_t locationLen;
+    std::streamsize locationLen;
     in.read(reinterpret_cast<char*>(&locationLen),
     sizeof(locationLen));
     courseLocation.resize(locationLen);
     in.read(&courseLocation[0], locationLen);
 
-    size_t instructorLen;
+    std::streamsize instructorLen;
     in.read(reinterpret_cast<char*>(&instructorLen),
     sizeof(instructorLen));
     instructorName.resize(instructorLen);
     in.read(&instructorName[0], instructorLen);
 
-    size_t timeSlotLen;
+    std::streamsize timeSlotLen;
     in.read(reinterpret_cast<char*>(&timeSlotLen),
     sizeof(timeSlotLen));
     courseTimeSlot.resize(timeSlotLen);

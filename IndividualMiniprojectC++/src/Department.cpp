@@ -37,7 +37,7 @@ int Department::getNumberOfMajors() const {
  * @return The name of the department chair.
  */
 std::string Department::getDepartmentChair() const {
-    return "departmentChair";
+    return departmentChair;
 }
 
 /**
@@ -60,7 +60,9 @@ void Department::addPersonToMajor() {
  * Decreases the number of majors in the department by one if it's greater than zero.
  */
 void Department::dropPersonFromMajor() {
-    numberOfMajors--;
+    if (numberOfMajors > 0) {
+        numberOfMajors--;
+    }
 }
 
 /**
@@ -107,21 +109,21 @@ std::string Department::display() const {
 }
 
 void Department::serialize(std::ostream& out) const {
-    size_t deptCodeLen = deptCode.length();
+    std::streamsize deptCodeLen = deptCode.length();
     out.write(reinterpret_cast<const char*>(&deptCodeLen), sizeof(deptCodeLen));
     out.write(deptCode.c_str(), deptCodeLen);
 
-    size_t chairLen = departmentChair.length();
+    std::streamsize chairLen = departmentChair.length();
     out.write(reinterpret_cast<const char*>(&chairLen), sizeof(chairLen));
     out.write(departmentChair.c_str(), chairLen);
 
     out.write(reinterpret_cast<const char*>(&numberOfMajors),
     sizeof(numberOfMajors));
 
-    size_t mapSize = courses.size();
+    std::streamsize mapSize = courses.size();
     out.write(reinterpret_cast<const char*>(&mapSize), sizeof(mapSize));
     for (const auto& it : courses) {
-        size_t courseIdLen = it.first.length();
+        std::streamsize courseIdLen = it.first.length();
         out.write(reinterpret_cast<const char*>(&courseIdLen),
         sizeof(courseIdLen));
         out.write(it.first.c_str(), courseIdLen);
@@ -130,22 +132,22 @@ void Department::serialize(std::ostream& out) const {
 }
 
 void Department::deserialize(std::istream& in) {
-    size_t deptCodeLen;
+    std::streamsize deptCodeLen;
     in.read(reinterpret_cast<char*>(&deptCodeLen), sizeof(deptCodeLen));
     deptCode.resize(deptCodeLen);
     in.read(&deptCode[0], deptCodeLen);
 
-    size_t chairLen;
+    std::streamsize chairLen;
     in.read(reinterpret_cast<char*>(&chairLen), sizeof(chairLen));
     departmentChair.resize(chairLen);
     in.read(&departmentChair[0], chairLen);
 
     in.read(reinterpret_cast<char*>(&numberOfMajors), sizeof(numberOfMajors));
 
-    size_t mapSize;
+    std::streamsize mapSize;
     in.read(reinterpret_cast<char*>(&mapSize), sizeof(mapSize));
-    for (size_t i = 0; i < mapSize; ++i) {
-        size_t courseIdLen;
+    for (std::streamsize i = 0; i < mapSize; ++i) {
+        std::streamsize courseIdLen;
         in.read(reinterpret_cast<char*>(&courseIdLen), sizeof(courseIdLen));
         std::string courseId(courseIdLen, ' ');
         in.read(&courseId[0], courseIdLen);

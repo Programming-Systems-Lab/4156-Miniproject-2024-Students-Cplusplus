@@ -1,5 +1,19 @@
+General guide on how to use cpplint
 https://github.com/cpplint/cpplint 
 
+Used this link while trying to figure out how to deal with a warning cpplint was providing regarding providing header guard, as
+    its inclusion would make the line lengths too long. Ended up using a different solution by using #pragma once
 https://github.com/cpplint/cpplint/issues/44 
 
+One link I looked at to deal with a warning that cpplint was outputting for my header files, but ended up not being too useful.
 https://github.com/brave/brave-browser/issues/22265
+
+I couldn't remember the exact command for making a new branch and checking out in git.
+https://stackoverflow.com/questions/17958288/branch-and-checkout-using-a-single-command 
+
+Just a quick reference that I used as I tried to figure out what command to use for clang-tidy in CMakeLists.txt.
+https://stackoverflow.com/questions/67999371/how-to-use-clang-tidy-in-cmake
+
+
+Installation of clang-tidy on MacOS. Specifically, I performed brew install llvm, but had to add llvm/bin directory location to my PATH in .zshrc.
+https://stackoverflow.com/questions/53111082/how-to-install-clang-tidy-on-macos 
