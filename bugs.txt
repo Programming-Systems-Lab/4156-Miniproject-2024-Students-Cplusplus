@@ -7,36 +7,22 @@ enrolledStudentCount < enrollmentCapacity and if true, then returns true after i
 - The dropStudent() function does not check whether the enrolledStudentCount is already at 0. It always returns false no matter what,
     so aded an if statement to check if enrolledStudentCount > 0 to fix this issue. 
 
-- CppLint warning: warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+- warning: warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
     Fixed this issue by converting size_t to std::streamsize by casting.
 
 
 Department.cpp:
 - The getDepartmentChair() function was not functioning properly; it was simply returning the string "departmentChair", rather than
     the actual department chair's name. Fixed by returning the variable departmentChair.
-warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
-  112 |     out.write(deptCode.c_str(), deptCodeLen);
-      |                                 ^
-warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
-  116 |     out.write(departmentChair.c_str(), chairLen);
-      |                                        ^
-warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
-  127 |         out.write(it.first.c_str(), courseIdLen);
-      |                                     ^
-warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
-  136 |     in.read(&deptCode[0], deptCodeLen);
-      |                           ^
-warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
-  141 |     in.read(&departmentChair[0], chairLen);
-      |                                  ^
-warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
-  151 |         in.read(&courseId[0], courseIdLen);
-      |                               ^
 
+- The dropPersonFromMajor() function did not have a check to see if the number of majors are greater than 0 before subtracting 1 from
+    the variable numberOfMajors. Added a conditional to check for this to be true before the subtraction occured. 
+
+- warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  Lines 112, 116, 127, 136, 141, 151
+   Fixed by converting size_t to std::streamsize.
 
 MyFileDatabase.cpp:
-warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
-   49 |         outFile.write(it.first.c_str(), keyLen);
-      |                                         ^
-warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
-   68 |         inFile.read(&key[0], keyLen);
+- warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+   Lines 49, 68
+    Fixed by converting size_t to std::streamsize.

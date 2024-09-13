@@ -3,6 +3,8 @@ Please follow the assignment specifications on Courseworks when completing this 
 
 SETUP:
 -   Used cpplint as the style checker tool for Google's C++ standard. After performing "pip install cpplint", I went over to        IndividualMiniProject/src and ran the command cpplint <file_name.cpp> for each of the files I had. 
+**cpplint currently outputs a warning for each code written, stating that I need to add copyright information at the top of the file.
+    This has been cleared with a TA (Shivansh) that I can proceed without worrying about this. 
 
 
 -   Used clang-tidy as the static analysis tool for my code. I performed "brew install llvm" first, then using one of the links I've
@@ -11,14 +13,15 @@ This allowed "clang-tidy" to be recognized by the system, and then I proceeded t
     if(CLANG_TIDY_EXE)
         set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=*;-quiet")
     endif()
-to my CMakeLists.txt. Quick side note - I struggled for a while because running clang-tidy manually on my terminal for specific files
+to my CMakeLists.txt. 
+Quick side note - I struggled for a while because running clang-tidy manually on my terminal for specific files
 worked fine, but it did not seem to change the outputs at all when I tried to build the executable using cmake. It turned out to be
 because I did not change any of the source files, so what I had to do was run the command "make clean" and then run "make" again from
-the build directory. Usage of clang-tidy drastically slows down the build process, however. Feel free to remove this part from 
+the build directory. Usage of clang-tidy slows down the build process, however. Feel free to remove this part from 
 CMakeLists when building if you want it to be done faster. 
 
 
-- Used gcc for coverage analysis
+-   Used gcc for coverage analysis
     1. pip install govr
     2. brew install gcc
     3. Navigate to build directory, then:
@@ -41,6 +44,7 @@ CMakeLists when building if you want it to be done faster.
     "rm -rf *" in the build directory for new builds if trying to run code coverage tests again.
     **Keep in mind that my mac is apple silicon, so the installation directories may differ if using an older model.
 
-CODE EXPLANATION:
+Doxygen:
+Nagivate to /html from the root directory, and run "open index.html" command (for mac)
 
 

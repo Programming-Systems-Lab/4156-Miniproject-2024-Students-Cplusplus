@@ -37,3 +37,8 @@ TEST_F(DepartmentUnitTests, AddPersonToMajorTest) {
 TEST_F(DepartmentUnitTests, getDepartmentChairTest) {
     ASSERT_EQ("Dr. Jameson", testDepartment->getDepartmentChair());
 }
+
+TEST_F(DepartmentUnitTests, removePersonFromMajorTest) {
+    testDepartment->dropPersonFromMajor();
+    ASSERT_EQ(119, testDepartment->getNumberOfMajors());
+}

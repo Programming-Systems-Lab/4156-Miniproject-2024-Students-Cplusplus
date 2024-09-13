@@ -4,6 +4,7 @@ https://github.com/cpplint/cpplint/issues/44
 
 https://github.com/brave/brave-browser/issues/22265
 
+I couldn't remember the exact command for making a new branch and checking out in git.
 https://stackoverflow.com/questions/17958288/branch-and-checkout-using-a-single-command 
 
 https://stackoverflow.com/questions/67999371/how-to-use-clang-tidy-in-cmake

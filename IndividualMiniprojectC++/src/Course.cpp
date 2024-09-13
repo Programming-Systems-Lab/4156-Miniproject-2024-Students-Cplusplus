@@ -128,19 +128,19 @@ void Course::deserialize(std::istream& in) {
     in.read(reinterpret_cast<char*>(&enrolledStudentCount),
     sizeof(enrolledStudentCount));
 
-    size_t locationLen;
+    std::streamsize locationLen;
     in.read(reinterpret_cast<char*>(&locationLen),
     sizeof(locationLen));
     courseLocation.resize(locationLen);
     in.read(&courseLocation[0], locationLen);
 
-    size_t instructorLen;
+    std::streamsize instructorLen;
     in.read(reinterpret_cast<char*>(&instructorLen),
     sizeof(instructorLen));
     instructorName.resize(instructorLen);
     in.read(&instructorName[0], instructorLen);
 
-    size_t timeSlotLen;
+    std::streamsize timeSlotLen;
     in.read(reinterpret_cast<char*>(&timeSlotLen),
     sizeof(timeSlotLen));
     courseTimeSlot.resize(timeSlotLen);
