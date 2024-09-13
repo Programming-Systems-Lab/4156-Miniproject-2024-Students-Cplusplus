@@ -1,3 +1,5 @@
+/* Copyright 2024 Vidushi Bansal */
+
 #include "MyFileDatabase.h"
 #include <iostream>
 #include <fstream>

@@ -1,3 +1,5 @@
+/* Copyright 2024 Vidushi Bansal */
+
 #include "Course.h"
 #include <iostream>
 #include <string>

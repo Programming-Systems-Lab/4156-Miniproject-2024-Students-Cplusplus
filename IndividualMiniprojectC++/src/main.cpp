@@ -1,14 +1,16 @@
-#include "crow.h"
+/* Copyright 2024 Vidushi Bansal */
+
 #include "Course.h"
 #include "Department.h"
 #include "MyFileDatabase.h"
 #include "RouteController.h"
 #include "Globals.h"
 #include "MyApp.h"
+#include <csignal>
 #include <iostream>
 #include <map>
 #include <string>
-#include <csignal>
+#include "../external_libraries/Crow-1.2.0-Darwin/include/crow.h"
 
 /**
  *  Method to handle proper termination protocols 
