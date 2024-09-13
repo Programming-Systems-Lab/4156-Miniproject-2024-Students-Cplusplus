@@ -12,6 +12,8 @@ enrolledStudentCount < enrollmentCapacity and if true, then returns true after i
 
 
 Department.cpp:
+- The getDepartmentChair() function was not functioning properly; it was simply returning the string "departmentChair", rather than
+    the actual department chair's name. Fixed by returning the variable departmentChair.
 warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
   112 |     out.write(deptCode.c_str(), deptCodeLen);
       |                                 ^

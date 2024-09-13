@@ -28,8 +28,8 @@ Course* CourseUnitTests::testCourse2 = nullptr;
 Course* CourseUnitTests::testCourse3 = nullptr;
 
 TEST_F(CourseUnitTests, ToStringTest) {
-    std::string str1 = "Instructor: Griffin Newbold; Location: 417 ";
-    std::string str2 = "IAB; Time: 11:40-12:55";
+    std::string str1 = "\nInstructor: Griffin Newbold; Location: 417";
+    std::string str2 = " IAB; Time: 11:40-12:55";
     std::string expectedResult = str1 + str2;
     ASSERT_EQ(expectedResult, testCourse->display());
 }

@@ -19,15 +19,16 @@ CMakeLists when building if you want it to be done faster.
 
 
 - Used gcc for coverage analysis
-    pip install govr
-    brew install gcc
-    Navigate to build directory, then:
-    cmake -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-14 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-14 ..
-    make
+    1. pip install govr
+    2. brew install gcc
+    3. Navigate to build directory, then:
+    4. cmake -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-14 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-14 ..
+    5. make
 
-    ./IndividualMiniproject setup   (control + c after this command is run)
-    ./IndividualMiniprojectTests
+    6. ./IndividualMiniproject setup   (control + c after this command is run)
+    7. ./IndividualMiniprojectTests
 
+    8. 
     gcovr --root .. \
       --object-directory . \
       --gcov-executable /opt/homebrew/bin/gcov-14 \
@@ -35,7 +36,7 @@ CMakeLists when building if you want it to be done faster.
       -o coverage.html \
       -v
 
-    open coverage.html
+    9. open coverage.html
 
     "rm -rf *" in the build directory for new builds if trying to run code coverage tests again.
     **Keep in mind that my mac is apple silicon, so the installation directories may differ if using an older model.

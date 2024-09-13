@@ -72,6 +72,7 @@ enable_testing()
 add_executable(IndividualMiniprojectTests
   test/sample.cpp
   test/CourseUnitTests.cpp
+  test/DepartmentUnitTests.cpp
   src/Course.cpp
   src/Department.cpp
   src/MyFileDatabase.cpp
