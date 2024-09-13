@@ -1,3 +1,5 @@
+// Copyright 2024 Jacob Aaronson
+
 #include <gtest/gtest.h>
 
 // Demonstrate some basic assertions.

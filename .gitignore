@@ -1,5 +1,5 @@
 IndividualMiniprojectC++/.vscode/
-IndividualMiniprojectC++/external_libraries/boost_1_85_0
+IndividualMiniprojectC++/external_libraries/boost_1_86_0
 IndividualMiniprojectC++/external_libraries/Crow-1.2.0-Darwin
 IndividualMiniprojectC++/build/*
 !IndividualMiniprojectC++/build/README.txt

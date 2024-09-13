@@ -1,3 +1,5 @@
+// Copyright 2024 Jacob Aaronson
+
 #include "Department.h"
 #include "Course.h"
 #include <map>

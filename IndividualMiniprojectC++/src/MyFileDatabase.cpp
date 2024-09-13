@@ -1,3 +1,5 @@
+// Copyright 2024 Jacob Aaronson
+
 #include "MyFileDatabase.h"
 #include <iostream>
 #include <fstream>

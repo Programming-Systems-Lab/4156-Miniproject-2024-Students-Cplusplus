@@ -1,3 +1,5 @@
+// Copyright 2024 Jacob Aaronson
+
 #include "Course.h"
 #include <iostream>
 #include <string>
