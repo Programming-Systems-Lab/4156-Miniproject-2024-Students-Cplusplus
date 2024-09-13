@@ -16,6 +16,12 @@ crow::response handleException(const std::exception& e) {
 }
 
 /**
+ * Constructs a default RouteController object with the default parameters.
+ *
+ */
+RouteController::RouteController() : myFileDatabase(nullptr) {}
+
+/**
  * Redirects to the homepage.
  *
  * @return A string containing the name of the html file to be loaded.

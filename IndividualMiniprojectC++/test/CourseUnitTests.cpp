@@ -28,12 +28,25 @@ TEST_F(CourseUnitTests, EmptyConstructor) {
   ASSERT_EQ(expectedLocation, emptyCourse.getCourseLocation());
 }
 
+TEST_F(CourseUnitTests, isCourseFull) {
+  Course fullCourse(100, "", "", "");
+  fullCourse.setEnrolledStudentCount(100);
+  ASSERT_TRUE(fullCourse.isCourseFull());
+  fullCourse.setEnrolledStudentCount(99);
+  ASSERT_FALSE(fullCourse.isCourseFull());
+}
+
 TEST_F(CourseUnitTests, enrollStudent) {
-  if (testCourse->isCourseFull()) {
-    ASSERT_FALSE(testCourse->enrollStudent());
-  } else {
-    ASSERT_TRUE(testCourse->enrollStudent());
-  }
+  Course studentCourse(100, "", "", "");
+  
+  studentCourse.setEnrolledStudentCount(100);
+  ASSERT_FALSE(studentCourse.enrollStudent());
+  
+  studentCourse.setEnrolledStudentCount(200);
+  ASSERT_FALSE(studentCourse.enrollStudent());
+
+  studentCourse.setEnrolledStudentCount(99);
+  ASSERT_TRUE(studentCourse.enrollStudent());
 }
 
 TEST_F(CourseUnitTests, dropStudent) {
@@ -65,7 +78,7 @@ TEST_F(CourseUnitTests, Location) {
 }
 
 TEST_F(CourseUnitTests, serilaize) {
-  testCourse->serialize(std::cout);
+  //testCourse->serialize(std::cout);
 }
 
 TEST_F(CourseUnitTests, deserialize) {

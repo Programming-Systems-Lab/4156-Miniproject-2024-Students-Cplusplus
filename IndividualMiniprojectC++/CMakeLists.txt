@@ -111,7 +111,8 @@ if (ENABLE_COVERAGE)
         COMMAND ${LCOV} --remove coverage.info '*MyApp.cpp' '*RouteController.cpp' --output-file coverage.info
         # generate report
         COMMAND ${GENHTML} --demangle-cpp -o coverage coverage.info
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    )
 endif()
 
 add_executable(CodeCoverage
@@ -132,4 +133,10 @@ target_include_directories(CodeCoverage PRIVATE
 target_link_libraries(CodeCoverage PRIVATE
     gtest
     gtest_main
+)
+
+find_program(CPPCHECK cppcheck)
+add_custom_target(
+    cppcheck
+    COMMAND ${CPPCHECK} -I ../include/ --enable=all --inconclusive --library=posix --suppress=missingIncludeSystem ../src/ ../test/
 )

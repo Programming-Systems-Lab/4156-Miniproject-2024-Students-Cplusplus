@@ -10,6 +10,7 @@ class RouteController {
         MyFileDatabase* myFileDatabase;
 
     public:
+        RouteController();
         void initRoutes(crow::App<>& app);
         void setDatabase(MyFileDatabase* db);
 

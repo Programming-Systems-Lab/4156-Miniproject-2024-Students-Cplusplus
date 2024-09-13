@@ -1,0 +1,61 @@
+Course.cpp:14:20: function definition parameter name 'capacity' does not match
+function declartion parameter name 'count' [funcArgNamesDifferent]
+  Fixed by updating Course.h parameter name to 'capacity'
+
+Department.cpp:21:41: Member variable 'Department::deptCode' is in the wrong
+place in the initializer list. [initializerList]
+  Fixed by updating intializer list to correspond to Department.h
+
+Department.cpp:22:5: Member variable 'Department::numberOfMajors' is in the
+wrong place in the initializer list. [initializerList]
+  Fixed by updating intializer list to correspond to Department.h
+  
+Department.cpp:40:25: Technically the member function
+'Department::getDepartmentChair' can be static (but you may consider moving to
+unnamed namespace). [functionStatic]
+  This bug appear because the function returns a string literal instead of the
+  member variable 'departmentChair'. Fixed by removing the quotes.
+
+Department.cpp:74:40: performance: Function parameter 'courseId' should be
+passed by const reference. [passedByValue]
+  Fixed by changing to const reference.
+
+Department.cpp:88:43: performance: Function parameter 'courseId' should be
+passed by const reference. [passedByValue]
+  Fixed by changing to const reference.
+
+Department.cpp:19:49: performance: Function parameter 'courses' should be
+passed by const reference. [passedByValue]
+  Fixed by changing to const reference.
+
+RouteController.h:8:1: style: The class 'RouteController' does not declare a
+constructor although it has private member variables which likely require
+initialization. [noConstructor]
+  Fixed by created a constructor for RouteController.
+
+Course.cpp:58: getCourseTimeSlot() returns instructorName.
+  Fixed by returning courseTimeSlot.
+
+Course.cpp:53: getInstructorName() returns courseTimeSlot.
+  Fixed by returning instructorName.
+
+Course.cpp:67: function is printing to std::cout when it should not do that
+in production
+  Fixed by commenting out line
+
+Course.cpp:70: function is printing to std::cout when it should not do that
+in production
+  Fixed by commenting out line
+
+Course.cpp:44: dropStudent() always returns false.
+  Fixed logic to return correct boolean.
+
+Course.cpp:34: enrollStudent() always returns false.
+  Fixed logic to return correct boolean.
+
+Course.cpp:88: setEnrolledStudentCount might set student count to negative
+number that is nonsensical in this context.
+  Changed logic to not make any changes if a negative number is passed in.
+
+Course.cpp:92: isCourseFull() has wrong logic
+  Fixed logic to return correct boolean
