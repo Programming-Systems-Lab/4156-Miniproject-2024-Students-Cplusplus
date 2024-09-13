@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(IndividualMiniproject)
 
-set(INCLUDE_PATHS external_libraries/boost_1_85_0 external_libraries/Crow-1.2.0-Darwin/include)
+set(INCLUDE_PATHS external_libraries/boost_1_85_0 external_libraries/Crow-1.2.0-Darwin/include external_libraries/asio-master/asio/include)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -30,12 +30,13 @@ FetchContent_MakeAvailable(googletest)
 target_include_directories(IndividualMiniproject PUBLIC 
     ${INCLUDE_PATHS} 
     include
-    /opt/homebrew/Cellar/asio/1.30.2/include
 )
 
 target_link_libraries(IndividualMiniproject PRIVATE 
     gtest 
     gtest_main
+    ws2_32
+    wsock32
 )
 
 enable_testing()
