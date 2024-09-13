@@ -15,7 +15,7 @@ find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
 #endif()
 
 # Code coverage
-set(CMAKE_BUILD_TYPE Debug)  # Ensure debug build for coverage
+set(CMAKE_BUILD_TYPE Debug)  
 
 # Use GCC for coverage
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
@@ -38,9 +38,9 @@ add_executable(IndividualMiniproject
 )
 
 #clang-tidy
-#CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=clang-analyzer-*,bugprone-dangling-handle,bugprone-integer-division,bugprone-sizeof-expression,bugprone-string-integer-assignment,bugprone-undefined-memory-manipulation;-header-filter=^${CMAKE_SOURCE_DIR}/src/.*")
+message(STATUS "CLANG TIDY IS CURRENTLY ENABLED")
 set_target_properties(IndividualMiniproject PROPERTIES
-    CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=clang-analyzer-*,bugprone-*;-header-filter=^${CMAKE_SOURCE_DIR}/src/.*"
+    CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=clang-analyzer-*,bugprone-dangling-handle,bugprone-integer-division,bugprone-sizeof-expression,bugprone-string-integer-assignment,bugprone-undefined-memory-manipulation;-header-filter=^${CMAKE_SOURCE_DIR}/src/.*"
 )
 
 

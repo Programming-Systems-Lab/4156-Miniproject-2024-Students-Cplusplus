@@ -2,17 +2,18 @@
 Please follow the assignment specifications on Courseworks when completing this project.
 
 SETUP:
--   Used cpplint as the style checker tool for Google's C++ standard. After performing "pip install cpplint", I went over to        IndividualMiniProject/src and ran the command cpplint <file_name.cpp> for each of the files I had. 
+-   Used cpplint as the style checker tool for Google's C++ standard. After performing "pip install cpplint", I went over to        IndividualMiniProject/src and ran the command "cpplint <file_name.cpp>" for each of the files I had. (Alternatively, "cpplint *") 
 **cpplint currently outputs a warning for each code written, stating that I need to add copyright information at the top of the file.
     This has been cleared with a TA (Shivansh) that I can proceed without worrying about this. 
 
 
--   Used clang-tidy as the static analysis tool for my code. I performed "brew install llvm" first, then using one of the links I've
+-   Used clang-tidy as the static analysis tool for my code. Just from building and running the code, it is enabled by default. 
+I performed "brew install llvm" first, then using one of the links I've
 referenced in README, I added the llvm/bin directory location to my PATH in .zshrc (export PATH="/usr/local/opt/llvm/bin:$PATH"). 
 This allowed "clang-tidy" to be recognized by the system, and then I proceeded to add
-    if(CLANG_TIDY_EXE)
-        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=*;-quiet")
-    endif()
+                set_target_properties(IndividualMiniproject PROPERTIES
+                    CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=clang-analyzer-*,bugprone-dangling-handle,bugprone-integer-division,bugprone-sizeof-expression,bugprone-string-integer-assignment,bugprone-undefined-memory-manipulation;-header-filter=^${CMAKE_SOURCE_DIR}/src/.*"
+                )
 to my CMakeLists.txt. 
 Quick side note - I struggled for a while because running clang-tidy manually on my terminal for specific files
 worked fine, but it did not seem to change the outputs at all when I tried to build the executable using cmake. It turned out to be
