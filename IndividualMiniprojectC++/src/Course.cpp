@@ -37,6 +37,7 @@ bool Course::enrollStudent() {
             return true;
         }
     }
+
     return false;
 }
 
@@ -100,19 +101,25 @@ void Course::serialize(std::ostream& out) const {
     sizeof(enrolledStudentCount));
 
     size_t locationLen = courseLocation.length();
+    std::streamsize locationLenStreamSize =
+    static_cast<std::streamsize>(locationLen);
     out.write(reinterpret_cast<const char*>(&locationLen),
     sizeof(locationLen));
-    out.write(courseLocation.c_str(), locationLen);
+    out.write(courseLocation.c_str(), locationLenStreamSize);
 
     size_t instructorLen = instructorName.length();
+    std::streamsize instructorLenStreamSize =
+    static_cast<std::streamsize>(instructorLen);
     out.write(reinterpret_cast<const char*>(&instructorLen),
     sizeof(instructorLen));
-    out.write(instructorName.c_str(), instructorLen);
+    out.write(instructorName.c_str(), instructorLenStreamSize);
 
     size_t timeSlotLen = courseTimeSlot.length();
+    std::streamsize timeSlotLenStreamSize =
+    static_cast<std::streamsize>(timeSlotLen);
     out.write(reinterpret_cast<const char*>(&timeSlotLen),
     sizeof(timeSlotLen));
-    out.write(courseTimeSlot.c_str(), timeSlotLen);
+    out.write(courseTimeSlot.c_str(), timeSlotLenStreamSize);
 }
 
 void Course::deserialize(std::istream& in) {

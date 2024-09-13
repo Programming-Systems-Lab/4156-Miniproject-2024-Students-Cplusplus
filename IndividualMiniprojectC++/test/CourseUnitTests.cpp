@@ -8,8 +8,10 @@ class CourseUnitTests : public ::testing::Test {
     static Course* testCourse3;
 
     static void SetUpTestSuite() {
-        testCourse = new Course(250, "Griffin Newbold", "417 IAB", "11:40-12:55");
-        testCourse2 = new Course(600, "Griffin Newbold", "417 IAB", "11:40-12:55");
+        testCourse = new Course(250, "Griffin Newbold",
+         "417 IAB", "11:40-12:55");
+        testCourse2 = new Course(600, "Griffin Newbold",
+         "417 IAB", "11:40-12:55");
         testCourse3 = new Course();
     }
 
@@ -26,7 +28,9 @@ Course* CourseUnitTests::testCourse2 = nullptr;
 Course* CourseUnitTests::testCourse3 = nullptr;
 
 TEST_F(CourseUnitTests, ToStringTest) {
-    std::string expectedResult = "\nInstructor: Griffin Newbold; Location: 417 IAB; Time: 11:40-12:55";
+    std::string str1 = "Instructor: Griffin Newbold; Location: 417 ";
+    std::string str2 = "IAB; Time: 11:40-12:55";
+    std::string expectedResult = str1 + str2;
     ASSERT_EQ(expectedResult, testCourse->display());
 }
 

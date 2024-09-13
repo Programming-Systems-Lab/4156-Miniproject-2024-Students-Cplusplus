@@ -1,6 +1,40 @@
 Course.cpp:
-    - The enrollStudent() function and dropStudent() functions in Course.cpp were always returning false, without considerating whether
+
+- The enrollStudent() function and dropStudent() functions in Course.cpp were always returning false, without considerating whether
 the enrolled student count would be greater than the enrollment capacity. Added a check to see if 
 enrolledStudentCount < enrollmentCapacity and if true, then returns true after incrementing enrolledStudentCount.
-    - The dropStudent() function does not check whether the enrolledStudentCount is already at 0. It always returns false no matter what,
+
+- The dropStudent() function does not check whether the enrolledStudentCount is already at 0. It always returns false no matter what,
     so aded an if statement to check if enrolledStudentCount > 0 to fix this issue. 
+
+- CppLint warning: warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+    Fixed this issue by converting size_t to std::streamsize by casting.
+
+
+Department.cpp:
+warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  112 |     out.write(deptCode.c_str(), deptCodeLen);
+      |                                 ^
+warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  116 |     out.write(departmentChair.c_str(), chairLen);
+      |                                        ^
+warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  127 |         out.write(it.first.c_str(), courseIdLen);
+      |                                     ^
+warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  136 |     in.read(&deptCode[0], deptCodeLen);
+      |                           ^
+warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  141 |     in.read(&departmentChair[0], chairLen);
+      |                                  ^
+warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  151 |         in.read(&courseId[0], courseIdLen);
+      |                               ^
+
+
+MyFileDatabase.cpp:
+warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+   49 |         outFile.write(it.first.c_str(), keyLen);
+      |                                         ^
+warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+   68 |         inFile.read(&key[0], keyLen);

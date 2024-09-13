@@ -38,6 +38,7 @@ add_executable(IndividualMiniproject
 )
 
 #clang-tidy
+#CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=clang-analyzer-*,bugprone-dangling-handle,bugprone-integer-division,bugprone-sizeof-expression,bugprone-string-integer-assignment,bugprone-undefined-memory-manipulation;-header-filter=^${CMAKE_SOURCE_DIR}/src/.*")
 set_target_properties(IndividualMiniproject PROPERTIES
     CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=clang-analyzer-*,bugprone-*;-header-filter=^${CMAKE_SOURCE_DIR}/src/.*"
 )
