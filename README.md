@@ -25,6 +25,9 @@ CMakeLists when building if you want it to be done faster.
     cmake -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-14 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-14 ..
     make
 
+    ./IndividualMiniproject setup   (control + c after this command is run)
+    ./IndividualMiniprojectTests
+
     gcovr --root .. \
       --object-directory . \
       --gcov-executable /opt/homebrew/bin/gcov-14 \

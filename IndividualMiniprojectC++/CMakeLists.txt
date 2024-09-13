@@ -9,10 +9,9 @@ set(CMAKE_BUILD_TYPE Debug)
 
 
 #clang-tidy (remove this and the if conditional directly below if you don't want to use clang-tidy)
-#find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
-
+find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
 #if(CLANG_TIDY_EXE)
-    #set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=*;-header-filter=^${CMAKE_SOURCE_DIR}/IndividualMiniprojectC++/src/.*")
+    #set(CMAKE_CXX_CLANG_TIDY"${CLANG_TIDY_EXE};-checks=-*,modernize-*,performance-*;-header-filter=^${CMAKE_SOURCE_DIR}/src/.*")
 #endif()
 
 # Code coverage
@@ -37,6 +36,13 @@ add_executable(IndividualMiniproject
     src/MyApp.cpp
     src/Globals.cpp
 )
+
+#clang-tidy
+set_target_properties(IndividualMiniproject PROPERTIES
+    CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=clang-analyzer-*,bugprone-*;-header-filter=^${CMAKE_SOURCE_DIR}/src/.*"
+)
+
+
 
 include(FetchContent)
 FetchContent_Declare(

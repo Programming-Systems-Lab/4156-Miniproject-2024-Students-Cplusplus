@@ -16,6 +16,7 @@ class CourseUnitTests : public ::testing::Test {
     static void TearDownTestSuite() {
         delete testCourse;
         delete testCourse2;
+        delete testCourse3;
     }
 };
 
@@ -34,5 +35,9 @@ TEST_F(CourseUnitTests, EnrollStudentTest) {
 }
 
 TEST_F(CourseUnitTests, DropStudentTest) {
-    ASSERT_TRUE(testCourse3->dropStudent());
+    ASSERT_FALSE(testCourse3->dropStudent());
+}
+
+TEST_F(CourseUnitTests, IsCourseFullTest) {
+    ASSERT_FALSE(testCourse->isCourseFull());
 }

@@ -1,4 +1,6 @@
 Course.cpp:
     - The enrollStudent() function and dropStudent() functions in Course.cpp were always returning false, without considerating whether
-the enrolled student count would be greater than the enrollment capacity. 
-    - The dropStudent() function does not check whether the enrolledStudentCount is already at 0. 
+the enrolled student count would be greater than the enrollment capacity. Added a check to see if 
+enrolledStudentCount < enrollmentCapacity and if true, then returns true after incrementing enrolledStudentCount.
+    - The dropStudent() function does not check whether the enrolledStudentCount is already at 0. It always returns false no matter what,
+    so aded an if statement to check if enrolledStudentCount > 0 to fix this issue. 
