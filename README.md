@@ -14,7 +14,11 @@ This allowed "clang-tidy" to be recognized by the system, and then I proceeded t
 to my CMakeLists.txt. Quick side note - I struggled for a while because running clang-tidy manually on my terminal for specific files
 worked fine, but it did not seem to change the outputs at all when I tried to build the executable using cmake. It turned out to be
 because I did not change any of the source files, so what I had to do was run the command "make clean" and then run "make" again from
-the build directory. 
+the build directory. Usage of clang-tidy drastically slows down the build process, however. Feel free to remove this part from 
+CMakeLists when building if you want it to be done faster. 
+
+
+- Used clang for coverage analysis
 
 CODE EXPLANATION:
 
