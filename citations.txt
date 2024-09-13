@@ -3,3 +3,11 @@ https://github.com/cpplint/cpplint
 https://github.com/cpplint/cpplint/issues/44 
 
 https://github.com/brave/brave-browser/issues/22265
+
+https://stackoverflow.com/questions/17958288/branch-and-checkout-using-a-single-command 
+
+https://stackoverflow.com/questions/67999371/how-to-use-clang-tidy-in-cmake
+
+
+Installation of clang-tidy on MacOS. Specifically, I performed brew install llvm, but had to add llvm/bin directory location to my PATH in .zshrc.
+https://stackoverflow.com/questions/53111082/how-to-install-clang-tidy-on-macos 

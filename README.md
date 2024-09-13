@@ -1,5 +1,21 @@
 # Welcome Students of 4156
 Please follow the assignment specifications on Courseworks when completing this project.
 
-Used cpplint as the static analysis tool. After performing pip install cpplint, I went over to IndividualMiniProject/src and
-ran the command cpplint <file_name.cpp> for each of the files I had. 
+SETUP:
+-   Used cpplint as the style checker tool for Google's C++ standard. After performing "pip install cpplint", I went over to        IndividualMiniProject/src and ran the command cpplint <file_name.cpp> for each of the files I had. 
+
+
+-   Used clang-tidy as the static analysis tool for my code. I performed "brew install llvm" first, then using one of the links I've
+referenced in README, I added the llvm/bin directory location to my PATH in .zshrc (export PATH="/usr/local/opt/llvm/bin:$PATH"). 
+This allowed "clang-tidy" to be recognized by the system, and then I proceeded to add
+    if(CLANG_TIDY_EXE)
+        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=*;-quiet")
+    endif()
+to my CMakeLists.txt. Quick side note - I struggled for a while because running clang-tidy manually on my terminal for specific files
+worked fine, but it did not seem to change the outputs at all when I tried to build the executable using cmake. It turned out to be
+because I did not change any of the source files, so what I had to do was run the command "make clean" and then run "make" again from
+the build directory. 
+
+CODE EXPLANATION:
+
+

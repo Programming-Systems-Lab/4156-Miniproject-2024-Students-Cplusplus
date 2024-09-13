@@ -6,6 +6,14 @@ set(INCLUDE_PATHS external_libraries/boost_1_86_0 external_libraries/Crow/includ
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+#clang-tidy
+find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
+
+if(CLANG_TIDY_EXE)
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-checks=*;-quiet")
+endif()
+
+
 # Main project executable
 add_executable(IndividualMiniproject 
     src/main.cpp 
