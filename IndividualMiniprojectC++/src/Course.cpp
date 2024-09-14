@@ -72,16 +72,19 @@ std::string Course::display() const {
 void Course::reassignInstructor(const std::string& newInstructorName) {
   //std::cout << "Old Instructor: " << instructorName << std::endl;
   // Ensure the class member is being updated
-  this->instructorName = newInstructorName;
+  if (!newInstructorName.empty())
+    this->instructorName = newInstructorName;
   //std::cout << "New Instructor: " << this->instructorName << std::endl;
 }
 
 void Course::reassignLocation(const std::string& newLocation) {
-  courseLocation = newLocation;
+  if (!newLocation.empty())
+    courseLocation = newLocation;
 }
 
 void Course::reassignTime(const std::string& newTime) {
-  courseTimeSlot = newTime;
+  if (!newTime.empty())
+    courseTimeSlot = newTime;
 }
 
 void Course::setEnrolledStudentCount(int count) {

@@ -27,10 +27,8 @@ RouteController::RouteController() : myFileDatabase(nullptr) {}
  * @return A string containing the name of the html file to be loaded.
  */
 void RouteController::index(crow::response& res) {
-  res.write(R"(Welcome, in order to make an API call direct your
-               browser or Postman to an endpoint
-               \n\nThis can be done using the following format:
-               \n\nhttp://127.0.0.1:8080/endpoint?arg=value")");
+  res.write("Welcome, in order to make an API call direct your browser or Postman to an endpoint "
+            "\n\nThis can be done using the following format: \n\nhttp://127.0.0.1:8080/endpoint?arg=value");
   res.end();
 }
 

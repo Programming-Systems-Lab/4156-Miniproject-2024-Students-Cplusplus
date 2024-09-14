@@ -73,7 +73,8 @@ void Department::dropPersonFromMajor() {
  */
 void Department::addCourse(const std::string& courseId,
                            std::shared_ptr<Course> course) {
-  courses[courseId] = course;
+  if (!courseId.empty())
+    courses[courseId] = course;
 }
 
 /**

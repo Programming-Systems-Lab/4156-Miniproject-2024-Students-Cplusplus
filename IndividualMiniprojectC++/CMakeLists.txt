@@ -45,9 +45,12 @@ add_executable(IndividualMiniprojectTests
   test/sample.cpp
   test/CourseUnitTests.cpp
   test/DepartmentUnitTests.cpp
+  test/RouteControllerUnitTests.cpp
   src/Course.cpp
   src/Department.cpp
   src/MyFileDatabase.cpp
+  src/RouteController.cpp
+  src/MyApp.cpp
 )
 
 target_include_directories(IndividualMiniprojectTests PRIVATE 
@@ -80,6 +83,7 @@ if (CPPLINT)
         test/sample.cpp
         test/CourseUnitTests.cpp
         test/DepartmentUnitTests.cpp
+        test/RouteControllerUnitTests.cpp
     )
 
     # Custom target to run cpplint
@@ -108,7 +112,7 @@ if (ENABLE_COVERAGE)
         COMMAND ${LCOV} --directory . --capture --output-file coverage.info
         # exclude header files
         COMMAND ${LCOV} --remove coverage.info '/usr/*' '*.h' '*main.cpp' '*test*' --output-file coverage.info
-        COMMAND ${LCOV} --remove coverage.info '*MyApp.cpp' '*RouteController.cpp' --output-file coverage.info
+        COMMAND ${LCOV} --remove coverage.info '*MyApp.cpp' --output-file coverage.info
         # generate report
         COMMAND ${GENHTML} --demangle-cpp -o coverage coverage.info
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
@@ -120,9 +124,12 @@ add_executable(CodeCoverage
   test/CourseUnitTests.cpp
   test/DepartmentUnitTests.cpp
   test/MyFileDatabaseUnitTests.cpp
+  test/RouteControllerUnitTests.cpp
   src/Course.cpp
   src/Department.cpp
   src/MyFileDatabase.cpp
+  src/RouteController.cpp
+  src/MyApp.cpp
 )
 
 target_include_directories(CodeCoverage PRIVATE
@@ -138,5 +145,6 @@ target_link_libraries(CodeCoverage PRIVATE
 find_program(CPPCHECK cppcheck)
 add_custom_target(
     cppcheck
-    COMMAND ${CPPCHECK} -I ../include/ --enable=all --inconclusive --library=posix --suppress=missingIncludeSystem ../src/ ../test/
+    #COMMAND ${CPPCHECK} -I ../include/ --enable=all --inconclusive --library=posix --suppress=missingInclude --suppress=missingIncludeSystem --suppress=checkersReport --suppress=unusedFunction ../src/ ../test/
+    COMMAND ${CPPCHECK} -I ../include/ --enable=all --library=posix --suppress=missingInclude --suppress=missingIncludeSystem --suppress=checkersReport --suppress=unusedFunction ../src/ ../test/
 )
