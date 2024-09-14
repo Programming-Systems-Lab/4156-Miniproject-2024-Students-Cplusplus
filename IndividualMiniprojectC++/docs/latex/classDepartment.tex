@@ -1,0 +1,160 @@
+\hypertarget{classDepartment}{}\doxysection{Department Class Reference}
+\label{classDepartment}\index{Department@{Department}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDepartment_ac8fc3057991309111505d9c42b3f7c40}{Department}} (std\+::string dept\+Code, std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCourse}{Course}} $>$$>$ courses, std\+::string department\+Chair, int number\+Of\+Majors)
+\item 
+int \mbox{\hyperlink{classDepartment_a362f31ea4aeac4622183b9c69373c791}{get\+Number\+Of\+Majors}} () const
+\item 
+\mbox{\Hypertarget{classDepartment_a2fc6005745375f03cd8294caad4f2c80}\label{classDepartment_a2fc6005745375f03cd8294caad4f2c80}} 
+void {\bfseries serialize} (std\+::ostream \&out) const
+\item 
+\mbox{\Hypertarget{classDepartment_a698dcc57df647924b76d1ee342dc3671}\label{classDepartment_a698dcc57df647924b76d1ee342dc3671}} 
+void {\bfseries deserialize} (std\+::istream \&in)
+\item 
+void \mbox{\hyperlink{classDepartment_a64c870450946db323fd08786e9abba81}{add\+Person\+To\+Major}} ()
+\item 
+void \mbox{\hyperlink{classDepartment_ae13d774a7e8effcc6443a5a33f913c5e}{drop\+Person\+From\+Major}} ()
+\item 
+void \mbox{\hyperlink{classDepartment_a0af4ca64fbda934c11bd1d7fc72ab61d}{add\+Course}} (std\+::string course\+Id, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCourse}{Course}} $>$ course)
+\item 
+void \mbox{\hyperlink{classDepartment_a82287181f6842d9d6de63f7c3accc9ac}{create\+Course}} (std\+::string course\+Id, std\+::string instructor\+Name, std\+::string course\+Location, std\+::string course\+Time\+Slot, int capacity)
+\item 
+std\+::string \mbox{\hyperlink{classDepartment_a0dba8d947307188428c24bac43900d5a}{display}} () const
+\item 
+std\+::string \mbox{\hyperlink{classDepartment_a29b194613b2d80fb936d2ae36f931786}{get\+Department\+Chair}} () const
+\item 
+std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCourse}{Course}} $>$ $>$ \mbox{\hyperlink{classDepartment_ae3136f6a723420c862de7878fbc68dc1}{get\+Course\+Selection}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDepartment_ac8fc3057991309111505d9c42b3f7c40}\label{classDepartment_ac8fc3057991309111505d9c42b3f7c40}} 
+\index{Department@{Department}!Department@{Department}}
+\index{Department@{Department}!Department@{Department}}
+\doxysubsubsection{\texorpdfstring{Department()}{Department()}}
+{\footnotesize\ttfamily Department\+::\+Department (\begin{DoxyParamCaption}\item[{std\+::string}]{dept\+Code,  }\item[{std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCourse}{Course}} $>$$>$}]{courses,  }\item[{std\+::string}]{department\+Chair,  }\item[{int}]{number\+Of\+Majors }\end{DoxyParamCaption})}
+
+MIT License
+
+Copyright (c) 2024 Programming Systems Lab @ Columbia University
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. Constructs a new \mbox{\hyperlink{classDepartment}{Department}} object with the given parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dept\+Code} & The code of the department. \\
+\hline
+{\em courses} & A Hash\+Map containing courses offered by the department. \\
+\hline
+{\em department\+Chair} & The name of the department chair. \\
+\hline
+{\em number\+Of\+Majors} & The number of majors in the department. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDepartment_a0af4ca64fbda934c11bd1d7fc72ab61d}\label{classDepartment_a0af4ca64fbda934c11bd1d7fc72ab61d}} 
+\index{Department@{Department}!addCourse@{addCourse}}
+\index{addCourse@{addCourse}!Department@{Department}}
+\doxysubsubsection{\texorpdfstring{addCourse()}{addCourse()}}
+{\footnotesize\ttfamily void Department\+::add\+Course (\begin{DoxyParamCaption}\item[{std\+::string}]{course\+Id,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCourse}{Course}} $>$}]{course }\end{DoxyParamCaption})}
+
+Adds a new course to the department\textquotesingle{}s course selection.
+
+
+\begin{DoxyParams}{Parameters}
+{\em course\+Id} & The ID of the course to add. \\
+\hline
+{\em course} & The \mbox{\hyperlink{classCourse}{Course}} object to add. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDepartment_a64c870450946db323fd08786e9abba81}\label{classDepartment_a64c870450946db323fd08786e9abba81}} 
+\index{Department@{Department}!addPersonToMajor@{addPersonToMajor}}
+\index{addPersonToMajor@{addPersonToMajor}!Department@{Department}}
+\doxysubsubsection{\texorpdfstring{addPersonToMajor()}{addPersonToMajor()}}
+{\footnotesize\ttfamily void Department\+::add\+Person\+To\+Major (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Increases the number of majors in the department by one. \mbox{\Hypertarget{classDepartment_a82287181f6842d9d6de63f7c3accc9ac}\label{classDepartment_a82287181f6842d9d6de63f7c3accc9ac}} 
+\index{Department@{Department}!createCourse@{createCourse}}
+\index{createCourse@{createCourse}!Department@{Department}}
+\doxysubsubsection{\texorpdfstring{createCourse()}{createCourse()}}
+{\footnotesize\ttfamily void Department\+::create\+Course (\begin{DoxyParamCaption}\item[{std\+::string}]{course\+Id,  }\item[{std\+::string}]{instructor\+Name,  }\item[{std\+::string}]{course\+Location,  }\item[{std\+::string}]{course\+Time\+Slot,  }\item[{int}]{capacity }\end{DoxyParamCaption})}
+
+Creates and adds a new course to the department\textquotesingle{}s course selection.
+
+
+\begin{DoxyParams}{Parameters}
+{\em course\+Id} & The ID of the new course. \\
+\hline
+{\em instructor\+Name} & The name of the instructor teaching the course. \\
+\hline
+{\em course\+Location} & The location where the course is held. \\
+\hline
+{\em course\+Time\+Slot} & The time slot of the course. \\
+\hline
+{\em capacity} & The maximum number of students that can enroll in the course. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDepartment_a0dba8d947307188428c24bac43900d5a}\label{classDepartment_a0dba8d947307188428c24bac43900d5a}} 
+\index{Department@{Department}!display@{display}}
+\index{display@{display}!Department@{Department}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily std\+::string Department\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns a string representation of the department, including its code and the courses offered.
+
+\begin{DoxyReturn}{Returns}
+A string representing the department. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDepartment_ae13d774a7e8effcc6443a5a33f913c5e}\label{classDepartment_ae13d774a7e8effcc6443a5a33f913c5e}} 
+\index{Department@{Department}!dropPersonFromMajor@{dropPersonFromMajor}}
+\index{dropPersonFromMajor@{dropPersonFromMajor}!Department@{Department}}
+\doxysubsubsection{\texorpdfstring{dropPersonFromMajor()}{dropPersonFromMajor()}}
+{\footnotesize\ttfamily void Department\+::drop\+Person\+From\+Major (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Decreases the number of majors in the department by one if it\textquotesingle{}s greater than zero. \mbox{\Hypertarget{classDepartment_ae3136f6a723420c862de7878fbc68dc1}\label{classDepartment_ae3136f6a723420c862de7878fbc68dc1}} 
+\index{Department@{Department}!getCourseSelection@{getCourseSelection}}
+\index{getCourseSelection@{getCourseSelection}!Department@{Department}}
+\doxysubsubsection{\texorpdfstring{getCourseSelection()}{getCourseSelection()}}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classCourse}{Course}} $>$ $>$ Department\+::get\+Course\+Selection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Gets the courses offered by the department.
+
+\begin{DoxyReturn}{Returns}
+A Hash\+Map containing courses offered by the department. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDepartment_a29b194613b2d80fb936d2ae36f931786}\label{classDepartment_a29b194613b2d80fb936d2ae36f931786}} 
+\index{Department@{Department}!getDepartmentChair@{getDepartmentChair}}
+\index{getDepartmentChair@{getDepartmentChair}!Department@{Department}}
+\doxysubsubsection{\texorpdfstring{getDepartmentChair()}{getDepartmentChair()}}
+{\footnotesize\ttfamily std\+::string Department\+::get\+Department\+Chair (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Gets the name of the department chair.
+
+\begin{DoxyReturn}{Returns}
+The name of the department chair. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDepartment_a362f31ea4aeac4622183b9c69373c791}\label{classDepartment_a362f31ea4aeac4622183b9c69373c791}} 
+\index{Department@{Department}!getNumberOfMajors@{getNumberOfMajors}}
+\index{getNumberOfMajors@{getNumberOfMajors}!Department@{Department}}
+\doxysubsubsection{\texorpdfstring{getNumberOfMajors()}{getNumberOfMajors()}}
+{\footnotesize\ttfamily int Department\+::get\+Number\+Of\+Majors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Gets the number of majors in the department.
+
+\begin{DoxyReturn}{Returns}
+The number of majors. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/natal/\+Dev/\+W4156/4156-\/\+Miniproject-\/2024-\/\+Students-\/\+Cplusplus/\+Individual\+Miniproject\+C++/include/Department.\+h\item 
+/home/natal/\+Dev/\+W4156/4156-\/\+Miniproject-\/2024-\/\+Students-\/\+Cplusplus/\+Individual\+Miniproject\+C++/src/Department.\+cpp\end{DoxyCompactItemize}

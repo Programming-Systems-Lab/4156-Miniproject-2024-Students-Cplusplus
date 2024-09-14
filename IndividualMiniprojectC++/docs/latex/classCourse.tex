@@ -1,0 +1,117 @@
+\hypertarget{classCourse}{}\doxysection{Course Class Reference}
+\label{classCourse}\index{Course@{Course}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCourse_aa4061433bb398eacfc05cd7b81db5b80}{Course}} (int count, const std\+::string \&instructor\+Name, const std\+::string \&course\+Location, const std\+::string \&time\+Slot)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classCourse}{Course}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCourse_a6b959ccf15d9ceed9e9c14a701561982}{Course}} ()
+\item 
+\mbox{\Hypertarget{classCourse_a615d7c89974583d239072a9b68f918d9}\label{classCourse_a615d7c89974583d239072a9b68f918d9}} 
+std\+::string {\bfseries get\+Course\+Location} () const
+\item 
+\mbox{\Hypertarget{classCourse_aba6f6ab1c28626b6b8c5b1ad5510816e}\label{classCourse_aba6f6ab1c28626b6b8c5b1ad5510816e}} 
+std\+::string {\bfseries get\+Instructor\+Name} () const
+\item 
+\mbox{\Hypertarget{classCourse_aedec60e1e8194371f6bf1d1b75f7b9e8}\label{classCourse_aedec60e1e8194371f6bf1d1b75f7b9e8}} 
+std\+::string {\bfseries get\+Course\+Time\+Slot} () const
+\item 
+\mbox{\Hypertarget{classCourse_a53eaa80fcef099d5194831780b98fd15}\label{classCourse_a53eaa80fcef099d5194831780b98fd15}} 
+std\+::string {\bfseries display} () const
+\item 
+\mbox{\Hypertarget{classCourse_acd56a42a3cd443a3d9efbbe1c2bc8d60}\label{classCourse_acd56a42a3cd443a3d9efbbe1c2bc8d60}} 
+bool {\bfseries is\+Course\+Full} () const
+\item 
+bool \mbox{\hyperlink{classCourse_ad9e42edaa32cf0fb0d421c76a84ed102}{enroll\+Student}} ()
+\item 
+bool \mbox{\hyperlink{classCourse_aef99dbb112eb46430cfe744b44219731}{drop\+Student}} ()
+\item 
+\mbox{\Hypertarget{classCourse_aeaf81b5ce9541aa3da4b8354b5960d00}\label{classCourse_aeaf81b5ce9541aa3da4b8354b5960d00}} 
+void {\bfseries reassign\+Instructor} (const std\+::string \&new\+Instructor\+Name)
+\item 
+\mbox{\Hypertarget{classCourse_a2f0667cf99850debf7ecd3357e157579}\label{classCourse_a2f0667cf99850debf7ecd3357e157579}} 
+void {\bfseries reassign\+Location} (const std\+::string \&new\+Location)
+\item 
+\mbox{\Hypertarget{classCourse_a879cd2e08c4c6e121b1e92ccb18c0aba}\label{classCourse_a879cd2e08c4c6e121b1e92ccb18c0aba}} 
+void {\bfseries reassign\+Time} (const std\+::string \&new\+Time)
+\item 
+\mbox{\Hypertarget{classCourse_accbd612ac62141596ba4cd27b61d2bdb}\label{classCourse_accbd612ac62141596ba4cd27b61d2bdb}} 
+void {\bfseries set\+Enrolled\+Student\+Count} (int count)
+\item 
+\mbox{\Hypertarget{classCourse_abd1aa1ee94ced1e740e4e8f104f5133a}\label{classCourse_abd1aa1ee94ced1e740e4e8f104f5133a}} 
+void {\bfseries serialize} (std\+::ostream \&out) const
+\item 
+\mbox{\Hypertarget{classCourse_aacdee3ff8fd2840cfe7822b13c1ecbc8}\label{classCourse_aacdee3ff8fd2840cfe7822b13c1ecbc8}} 
+void {\bfseries deserialize} (std\+::istream \&in)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCourse_aa4061433bb398eacfc05cd7b81db5b80}\label{classCourse_aa4061433bb398eacfc05cd7b81db5b80}} 
+\index{Course@{Course}!Course@{Course}}
+\index{Course@{Course}!Course@{Course}}
+\doxysubsubsection{\texorpdfstring{Course()}{Course()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Course\+::\+Course (\begin{DoxyParamCaption}\item[{int}]{capacity,  }\item[{const std\+::string \&}]{instructor\+Name,  }\item[{const std\+::string \&}]{course\+Location,  }\item[{const std\+::string \&}]{time\+Slot }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classCourse}{Course}}. 
+
+MIT License
+
+Copyright (c) 2024 Programming Systems Lab @ Columbia University
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. Constructs a new \mbox{\hyperlink{classCourse}{Course}} object with the given parameters. Initial count starts at 0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em instructor\+Name} & The name of the instructor teaching the course. \\
+\hline
+{\em course\+Location} & The location where the course is held. \\
+\hline
+{\em time\+Slot} & The time slot of the course. \\
+\hline
+{\em capacity} & The maximum number of students that can enroll in the course. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCourse_a6b959ccf15d9ceed9e9c14a701561982}\label{classCourse_a6b959ccf15d9ceed9e9c14a701561982}} 
+\index{Course@{Course}!Course@{Course}}
+\index{Course@{Course}!Course@{Course}}
+\doxysubsubsection{\texorpdfstring{Course()}{Course()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Course\+::\+Course (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructs a default \mbox{\hyperlink{classCourse}{Course}} object with the default parameters. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCourse_aef99dbb112eb46430cfe744b44219731}\label{classCourse_aef99dbb112eb46430cfe744b44219731}} 
+\index{Course@{Course}!dropStudent@{dropStudent}}
+\index{dropStudent@{dropStudent}!Course@{Course}}
+\doxysubsubsection{\texorpdfstring{dropStudent()}{dropStudent()}}
+{\footnotesize\ttfamily bool Course\+::drop\+Student (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Drops a student from the course if a student is enrolled.
+
+\begin{DoxyReturn}{Returns}
+true if the student is successfully dropped, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCourse_ad9e42edaa32cf0fb0d421c76a84ed102}\label{classCourse_ad9e42edaa32cf0fb0d421c76a84ed102}} 
+\index{Course@{Course}!enrollStudent@{enrollStudent}}
+\index{enrollStudent@{enrollStudent}!Course@{Course}}
+\doxysubsubsection{\texorpdfstring{enrollStudent()}{enrollStudent()}}
+{\footnotesize\ttfamily bool Course\+::enroll\+Student (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Enrolls a student in the course if there is space available.
+
+\begin{DoxyReturn}{Returns}
+true if the student is successfully enrolled, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/natal/\+Dev/\+W4156/4156-\/\+Miniproject-\/2024-\/\+Students-\/\+Cplusplus/\+Individual\+Miniproject\+C++/include/Course.\+h\item 
+/home/natal/\+Dev/\+W4156/4156-\/\+Miniproject-\/2024-\/\+Students-\/\+Cplusplus/\+Individual\+Miniproject\+C++/src/Course.\+cpp\end{DoxyCompactItemize}

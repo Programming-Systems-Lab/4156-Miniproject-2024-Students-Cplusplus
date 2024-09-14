@@ -1,0 +1,104 @@
+\hypertarget{classMyFileDatabase}{}\doxysection{My\+File\+Database Class Reference}
+\label{classMyFileDatabase}\index{MyFileDatabase@{MyFileDatabase}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMyFileDatabase_a8def1a975c77491e235c7ae15342d3c6}{My\+File\+Database}} (int flag, const std\+::string \&file\+Path)
+\item 
+void \mbox{\hyperlink{classMyFileDatabase_a2eb7c0add230130ce7d6aa4b1eb1b4f6}{set\+Mapping}} (const std\+::map$<$ std\+::string, \mbox{\hyperlink{classDepartment}{Department}} $>$ \&mapping)
+\item 
+void \mbox{\hyperlink{classMyFileDatabase_a825cf1ab440116ae76c742ecacb00194}{save\+Contents\+To\+File}} () const
+\item 
+void \mbox{\hyperlink{classMyFileDatabase_ac4a75302ea9fd833904dc75b5d27367c}{de\+Serialize\+Object\+From\+File}} ()
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{classDepartment}{Department}} $>$ \mbox{\hyperlink{classMyFileDatabase_abf19d1736912b0f647c30e885f7573ae}{get\+Department\+Mapping}} () const
+\item 
+std\+::string \mbox{\hyperlink{classMyFileDatabase_acc4226f9f5e73826ba74de4713891b0c}{display}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMyFileDatabase_a8def1a975c77491e235c7ae15342d3c6}\label{classMyFileDatabase_a8def1a975c77491e235c7ae15342d3c6}} 
+\index{MyFileDatabase@{MyFileDatabase}!MyFileDatabase@{MyFileDatabase}}
+\index{MyFileDatabase@{MyFileDatabase}!MyFileDatabase@{MyFileDatabase}}
+\doxysubsubsection{\texorpdfstring{MyFileDatabase()}{MyFileDatabase()}}
+{\footnotesize\ttfamily My\+File\+Database\+::\+My\+File\+Database (\begin{DoxyParamCaption}\item[{int}]{flag,  }\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})}
+
+MIT License
+
+Copyright (c) 2024 Programming Systems Lab @ Columbia University
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. Constructs a \mbox{\hyperlink{classMyFileDatabase}{My\+File\+Database}} object and loads up the data structure with the contents of the file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & used to distinguish mode of database \\
+\hline
+{\em file\+Path} & the path to the file containing the entries of the database \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMyFileDatabase_ac4a75302ea9fd833904dc75b5d27367c}\label{classMyFileDatabase_ac4a75302ea9fd833904dc75b5d27367c}} 
+\index{MyFileDatabase@{MyFileDatabase}!deSerializeObjectFromFile@{deSerializeObjectFromFile}}
+\index{deSerializeObjectFromFile@{deSerializeObjectFromFile}!MyFileDatabase@{MyFileDatabase}}
+\doxysubsubsection{\texorpdfstring{deSerializeObjectFromFile()}{deSerializeObjectFromFile()}}
+{\footnotesize\ttfamily void My\+File\+Database\+::de\+Serialize\+Object\+From\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Deserializes the object from the file and returns the department mapping.
+
+\begin{DoxyReturn}{Returns}
+the deserialized department mapping 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMyFileDatabase_acc4226f9f5e73826ba74de4713891b0c}\label{classMyFileDatabase_acc4226f9f5e73826ba74de4713891b0c}} 
+\index{MyFileDatabase@{MyFileDatabase}!display@{display}}
+\index{display@{display}!MyFileDatabase@{MyFileDatabase}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily std\+::string My\+File\+Database\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns a string representation of the database.
+
+\begin{DoxyReturn}{Returns}
+a string representation of the database 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMyFileDatabase_abf19d1736912b0f647c30e885f7573ae}\label{classMyFileDatabase_abf19d1736912b0f647c30e885f7573ae}} 
+\index{MyFileDatabase@{MyFileDatabase}!getDepartmentMapping@{getDepartmentMapping}}
+\index{getDepartmentMapping@{getDepartmentMapping}!MyFileDatabase@{MyFileDatabase}}
+\doxysubsubsection{\texorpdfstring{getDepartmentMapping()}{getDepartmentMapping()}}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, \mbox{\hyperlink{classDepartment}{Department}} $>$ My\+File\+Database\+::get\+Department\+Mapping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Gets the department mapping of the database.
+
+\begin{DoxyReturn}{Returns}
+the department mapping 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMyFileDatabase_a825cf1ab440116ae76c742ecacb00194}\label{classMyFileDatabase_a825cf1ab440116ae76c742ecacb00194}} 
+\index{MyFileDatabase@{MyFileDatabase}!saveContentsToFile@{saveContentsToFile}}
+\index{saveContentsToFile@{saveContentsToFile}!MyFileDatabase@{MyFileDatabase}}
+\doxysubsubsection{\texorpdfstring{saveContentsToFile()}{saveContentsToFile()}}
+{\footnotesize\ttfamily void My\+File\+Database\+::save\+Contents\+To\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Saves the contents of the internal data structure to the file. Contents of the file are overwritten with this operation. \mbox{\Hypertarget{classMyFileDatabase_a2eb7c0add230130ce7d6aa4b1eb1b4f6}\label{classMyFileDatabase_a2eb7c0add230130ce7d6aa4b1eb1b4f6}} 
+\index{MyFileDatabase@{MyFileDatabase}!setMapping@{setMapping}}
+\index{setMapping@{setMapping}!MyFileDatabase@{MyFileDatabase}}
+\doxysubsubsection{\texorpdfstring{setMapping()}{setMapping()}}
+{\footnotesize\ttfamily void My\+File\+Database\+::set\+Mapping (\begin{DoxyParamCaption}\item[{const std\+::map$<$ std\+::string, \mbox{\hyperlink{classDepartment}{Department}} $>$ \&}]{mapping }\end{DoxyParamCaption})}
+
+Sets the department mapping of the database.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mapping} & the mapping of department names to \mbox{\hyperlink{classDepartment}{Department}} objects \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/natal/\+Dev/\+W4156/4156-\/\+Miniproject-\/2024-\/\+Students-\/\+Cplusplus/\+Individual\+Miniproject\+C++/include/My\+File\+Database.\+h\item 
+/home/natal/\+Dev/\+W4156/4156-\/\+Miniproject-\/2024-\/\+Students-\/\+Cplusplus/\+Individual\+Miniproject\+C++/src/My\+File\+Database.\+cpp\end{DoxyCompactItemize}
