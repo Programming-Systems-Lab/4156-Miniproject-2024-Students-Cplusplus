@@ -1,8 +1,3 @@
-/**
- * @brief Course
- * 
- */
-
 /** 
 MIT License
 

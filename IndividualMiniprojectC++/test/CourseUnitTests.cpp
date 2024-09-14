@@ -44,3 +44,52 @@ TEST_F(CourseUnitTests, ToStringTest) {
     std::string expectedResult = "\nInstructor: Griffin Newbold; Location: 417 IAB; Time: 11:40-12:55";
     ASSERT_EQ(expectedResult, testCourse->display());
 }
+
+TEST_F(CourseUnitTests, EnrollStudentTest) {
+    testCourse->setEnrolledStudentCount(0);  
+
+    for (int i = 0; i < 250; ++i) {
+        ASSERT_TRUE(testCourse->enrollStudent());
+    }
+
+    ASSERT_FALSE(testCourse->enrollStudent());
+}
+
+TEST_F(CourseUnitTests, DropStudentTest) {
+    testCourse->setEnrolledStudentCount(10);  
+
+    for (int i = 0; i < 5; ++i) {
+        ASSERT_TRUE(testCourse->dropStudent());
+    }
+    ASSERT_EQ(testCourse->isCourseFull(), false);
+
+    testCourse->setEnrolledStudentCount(0);  
+
+    ASSERT_FALSE(testCourse->dropStudent()); 
+}
+
+TEST_F(CourseUnitTests, IsCourseFullTest) {
+    testCourse->setEnrolledStudentCount(250);  
+    ASSERT_TRUE(testCourse->isCourseFull());
+
+    testCourse->setEnrolledStudentCount(249);  
+    ASSERT_FALSE(testCourse->isCourseFull());
+
+    testCourse->setEnrolledStudentCount(500);
+    ASSERT_TRUE(testCourse->isCourseFull());
+}
+
+TEST_F(CourseUnitTests, ReassignInstructorTest) {
+    testCourse->reassignInstructor("Dr. Bean");
+    ASSERT_EQ(testCourse->getInstructorName(), "Dr. Bean");
+}
+
+TEST_F(CourseUnitTests, ReassignLocationTest) {
+    testCourse->reassignLocation("613 Hamilton");
+    ASSERT_EQ(testCourse->getCourseLocation(), "613 Hamilton");
+}
+
+TEST_F(CourseUnitTests, ReassignTimeTest) {
+    testCourse->reassignTime("10:10-11:20");
+    ASSERT_EQ(testCourse->getCourseTimeSlot(), "10:10-11:20");
+}

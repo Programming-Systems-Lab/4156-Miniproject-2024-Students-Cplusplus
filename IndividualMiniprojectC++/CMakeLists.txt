@@ -78,6 +78,10 @@ if (CPPLINT)
         src/Globals.cpp
         test/sample.cpp
         test/CourseUnitTests.cpp
+        test/DepartmentUnitTests.cpp
+        test/MyAppUnitTests.cpp
+        test/MyFileDatabaseUnitTests.cpp
+        test/RouteControllerUnitTests.cpp
     )
 
     # Custom target to run cpplint
