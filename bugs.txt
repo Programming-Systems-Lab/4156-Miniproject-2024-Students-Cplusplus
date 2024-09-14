@@ -1,0 +1,29 @@
+CppChecker and CodeChecker (utilizes codechecker) for sstatic analysis
+
+commad in terminal: cppchecker --enable=all "targetfile"
+
+Course.cc
+
+enrollStudent doesn't check if we have reached capacity. It will always return false.
+Add check.
+
+dropstudent doesn't check if there are any students. Fixed
+
+getInstructorName incorrectly returns timeSlot. Fixed
+
+getCourseTimeSlot incorrectly returns instructorName. Fixed
+
+Constructor sets enrolled student count to 500. It should be 0.
+
+Course contrusctor param named count instead of capacity
+
+
+Department.cc
+
+Department constructor params are have the same name as the private variables.
+
+Department chair doesn't return department chair just a fixed string.
+
+Add course doesn't check if there is a course id conflict.
+
+addPersonToMajor and dropPersonFromMajor: the function name do not match the purpose.

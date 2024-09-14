@@ -29,24 +29,24 @@ TEST_F(DepartmentUnitTests, GetNumberOfMajorsTest) {
 }
 
 TEST_F(DepartmentUnitTests, AddPersonToMajorTest) {
-    testDepartment->addPersonToMajor();
+    testDepartment->increaseNumOfMajor();
     ASSERT_EQ(501, testDepartment->getNumberOfMajors());
 }
 
 TEST_F(DepartmentUnitTests, DropPersonFromMajorTest) {
-    testDepartment->dropPersonFromMajor();
+    testDepartment->decreaseNumOfMajor();
     ASSERT_EQ(500, testDepartment->getNumberOfMajors());
 }
 
 TEST_F(DepartmentUnitTests, DropPersonBelowZeroTest) {
-    testDepartment->dropPersonFromMajor();
+    testDepartment->decreaseNumOfMajor();
     for (int i = 0; i < 500; ++i) {
-        testDepartment->dropPersonFromMajor();
+        testDepartment->decreaseNumOfMajor();
     }
     ASSERT_EQ(0, testDepartment->getNumberOfMajors());
 
     // Test if the count doesn't go below zero
-    testDepartment->dropPersonFromMajor();
+    testDepartment->decreaseNumOfMajor();
     ASSERT_EQ(0, testDepartment->getNumberOfMajors());
 }
 

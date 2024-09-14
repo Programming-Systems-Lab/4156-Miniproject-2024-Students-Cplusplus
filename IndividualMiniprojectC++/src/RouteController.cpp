@@ -371,7 +371,7 @@ void RouteController::addMajorToDept(const crow::request& req, crow::response& r
             res.code = 404;
             res.write("Department Not Found");
         } else {
-            deptIt->second.addPersonToMajor(); // Use dot operator to call method
+            deptIt->second.increaseNumOfMajor(); // Use dot operator to call method
             res.code = 200;
             res.write("Attribute was updated successfully");
         }
@@ -531,7 +531,7 @@ void RouteController::removeMajorFromDept(const crow::request& req, crow::respon
             res.code = 404;
             res.write("Department Not Found");
         } else {
-            deptIt->second.dropPersonFromMajor();
+            deptIt->second.decreaseNumOfMajor();
             res.code = 200;
             res.write("Attribute was updated successfully");
         }

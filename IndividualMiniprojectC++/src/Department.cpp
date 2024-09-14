@@ -38,9 +38,9 @@ SOFTWARE.
  * @param departmentChair  The name of the department chair.
  * @param numberOfMajors   The number of majors in the department.
  */
-Department::Department(std::string deptCode, std::map<std::string, std::shared_ptr<Course>> courses,
-                       std::string departmentChair, int numberOfMajors)
-    : departmentChair(departmentChair), deptCode(deptCode), numberOfMajors(numberOfMajors), courses(courses) {}
+Department::Department(std::string departmentCode, std::map<std::string, std::shared_ptr<Course>> coursesList,
+                std::string departmentChairName, int majorCount)
+    : departmentChair(departmentChairName), deptCode(departmentCode), numberOfMajors(majorCount), courses(coursesList) {}
 
 Department::Department() : numberOfMajors(0) {}
 
@@ -59,7 +59,7 @@ int Department::getNumberOfMajors() const {
  * @return The name of the department chair.
  */
 std::string Department::getDepartmentChair() const {
-    return "departmentChair"; 
+    return departmentChair; 
 }
 
 /**
@@ -74,24 +74,28 @@ std::map<std::string, std::shared_ptr<Course>> Department::getCourseSelection() 
 /**
  * Increases the number of majors in the department by one.
  */
-void Department::addPersonToMajor() {
+void Department::increaseNumOfMajor() {
     numberOfMajors++;
 }
 
 /**
  * Decreases the number of majors in the department by one if it's greater than zero.
  */
-void Department::dropPersonFromMajor() {
+void Department::decreaseNumOfMajor() {
     numberOfMajors--;
 }
 
 /**
- * Adds a new course to the department's course selection.
+ * Adds a new course to the department's course selection. Return if
+ * the a course with the same ID exists.
  *
  * @param courseId The ID of the course to add.
  * @param course   The Course object to add.
  */
 void Department::addCourse(std::string courseId, std::shared_ptr<Course> course) {
+    if (courses.find(courseId) == courses.end()){
+        return;
+    }
     courses[courseId] = course;
 }
 

@@ -11,7 +11,7 @@ class Course {
         std::string courseTimeSlot;
     
     public:
-        Course(int count, const std::string &instructorName, const std::string &courseLocation, const std::string &timeSlot);
+        Course(int capacity, const std::string &instructorName, const std::string &courseLocation, const std::string &timeSlot);
         Course();
 
         std::string getCourseLocation() const;

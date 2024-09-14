@@ -10,16 +10,16 @@
 
 class Department {
     public:
-        Department(std::string deptCode, std::map<std::string, std::shared_ptr<Course>> courses,
-                std::string departmentChair, int numberOfMajors);
+        Department(std::string departmentCode, std::map<std::string, std::shared_ptr<Course>> coursesList,
+                std::string departmentChairName, int majorCount);
 
         Department();
 
         int getNumberOfMajors() const;
         void serialize(std::ostream& out) const;
         void deserialize(std::istream& in);
-        void addPersonToMajor();
-        void dropPersonFromMajor();
+        void increaseNumOfMajor();
+        void decreaseNumOfMajor();
         void addCourse(std::string courseId, std::shared_ptr<Course> course);
         void createCourse(std::string courseId, std::string instructorName, std::string courseLocation,
                         std::string courseTimeSlot, int capacity);
