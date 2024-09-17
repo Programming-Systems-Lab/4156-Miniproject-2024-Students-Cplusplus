@@ -71,6 +71,7 @@ void MyFileDatabase::deSerializeObjectFromFile() {
         departmentMapping[key] = dept;
     }
     inFile.close();
+    getDepartmentMapping();
 }
 
 /**
