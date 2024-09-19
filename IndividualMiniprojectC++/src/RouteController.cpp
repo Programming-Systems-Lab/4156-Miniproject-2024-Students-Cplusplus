@@ -59,7 +59,7 @@ void RouteController::retrieveDepartment(Request req, Response res) {
 /**
  * Returns the string representation of all courses with the specified course code.
 */
-std::string RouteController::retrieveCourses() {
+std::string RouteController::retrieveCourses(Request req, Response res) {
     return "Hi";
 }
 
@@ -663,6 +663,10 @@ void RouteController::initRoutes(App app) {
     CROW_ROUTE(app, "/setEnrollmentCount")
         .methods(crow::HTTPMethod::PATCH)([this](Request req, Response res) {
             setEnrollmentCount(req, res);
+        });
+    CROW_ROUTE(app, "/retrieveCourses")
+        .methods(crow::HTTPMethod::GET)([this](Request req, Response res) {
+            retrieveCourses(req, res);
         });
 }
 
