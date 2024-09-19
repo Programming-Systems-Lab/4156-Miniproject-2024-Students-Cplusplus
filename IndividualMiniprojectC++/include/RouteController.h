@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "../external_libraries/Crow/include/crow.h"
 #include "Globals.h"
 #include "MyFileDatabase.h"
@@ -31,6 +32,7 @@ class RouteController {
         void setCourseInstructor(Request req, Response res);
         void setCourseTime(Request req, Response res);
         void dropStudentFromCourse(Request, Response res);
+        std::string retrieveCourses();
 };
 
 

@@ -56,6 +56,13 @@ void RouteController::retrieveDepartment(Request req, Response res) {
         res = handleException(e);
     }
 }
+/**
+ * Returns the string representation of all courses with the specified course code.
+*/
+std::string RouteController::retrieveCourses() {
+    return "Hi";
+}
+
 
 /**
  * Displays the details of the requested course to the user or displays the proper error
