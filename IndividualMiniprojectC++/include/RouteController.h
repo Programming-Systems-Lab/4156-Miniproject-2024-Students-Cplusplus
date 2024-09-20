@@ -32,7 +32,7 @@ class RouteController {
         void setCourseInstructor(Request req, Response res);
         void setCourseTime(Request req, Response res);
         void dropStudentFromCourse(Request, Response res);
-        std::string retrieveCourses(Request req, Response res);
+        void retrieveCourses(Request req, Response res);
 };
 
 

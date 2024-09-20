@@ -26,3 +26,5 @@ MyFileDatabase.cpp:
 - warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
    Lines 49, 68
     Fixed by converting size_t to std::streamsize.
+
+- Added missing return statement for returning departmentMapping for deserialize function. 

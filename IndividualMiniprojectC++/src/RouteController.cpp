@@ -59,8 +59,42 @@ void RouteController::retrieveDepartment(Request req, Response res) {
 /**
  * Returns the string representation of all courses with the specified course code.
 */
-std::string RouteController::retrieveCourses(Request req, Response res) {
-    return "Hi";
+void RouteController::retrieveCourses(Request req, Response res) {
+    try {
+        auto courseCode = req.url_params.get("courseCode");
+        if (!courseCode) {
+            res.code = 400;
+            res.write("You need to provide course code!");
+            res.end();
+            return;
+        }
+
+        auto departmentMapping = myFileDatabase->getDepartmentMapping();
+        std::string result;
+
+        for (const auto& departmentPair : departmentMapping) {
+            const auto& department = departmentPair.second;
+            const auto& courses = department.getCourseSelection();
+
+            auto courseIt = courses.find(courseCode);
+            if (courseIt != courses.end()) {
+                result += "Department: " + departmentPair.first + "\n";
+                result += courseIt->second->display() + "\n";
+            }
+        }
+
+        if (result.empty()) {
+            res.code = 404;
+            res.write("No courses found");
+        } else {
+            res.code = 200;
+            res.write(result);
+        }
+
+        res.end();
+    } catch (const std::exception& e) {
+        res = handleException(e);
+    }
 }
 
 
