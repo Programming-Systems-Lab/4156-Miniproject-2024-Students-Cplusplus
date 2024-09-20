@@ -91,3 +91,19 @@ if (CPPLINT)
 else()
     message(WARNING "cpplint not found! Skipping style checks.")
 endif()
+
+# set compiler flags
+set(CMAKE_CXX_FLAGS "-O0 -coverage")
+
+set(CMAKE_BINARY_DIR ./CMakeFiles/IndividualMiniprojectTests.dir/src)
+# find required tools
+find_program(LCOV lcov REQUIRED)
+find_program(GENHTML genhtml REQUIRED)
+
+# add coverage target
+add_custom_target(coverage
+# gather data
+COMMAND ${LCOV} --directory . --capture --output-file coverage.info
+# generate report
+COMMAND ${GENHTML} --demangle-cpp -o coverage coverage.info
+WORKING_DIRECTORY ${CMAKE_BINARY_DIR})

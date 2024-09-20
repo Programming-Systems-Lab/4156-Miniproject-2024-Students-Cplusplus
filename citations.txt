@@ -1,0 +1,2 @@
+https://danielsieger.com/blog/2022/03/06/code-coverage-for-cpp.html
+https://vicrucann.github.io/tutorials/quick-cmake-doxygen/

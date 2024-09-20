@@ -29,8 +29,12 @@ Course::Course() : enrollmentCapacity(0), enrolledStudentCount(0), courseLocatio
  * @return true if the student is successfully enrolled, false otherwise.
  */
 bool Course::enrollStudent() {
-    enrolledStudentCount++;
-    return false; 
+    if(enrolledStudentCount<enrollmentCapacity){
+        enrolledStudentCount++;
+        return true;
+    }
+    else   
+        return false; 
 }
 
 /**
@@ -39,8 +43,12 @@ bool Course::enrollStudent() {
  * @return true if the student is successfully dropped, false otherwise.
  */
 bool Course::dropStudent() {
-    enrolledStudentCount--;
-    return false; 
+    if(enrolledStudentCount>0 and enrolledStudentCount<=enrollmentCapacity){
+        enrolledStudentCount--;
+        return true;
+    }
+    else
+        return false; 
 }
 
 std::string Course::getCourseLocation() const {
@@ -74,7 +82,9 @@ void Course::reassignTime(const std::string& newTime) {
 }
 
 void Course::setEnrolledStudentCount(int count) {
-    enrolledStudentCount = count;
+    if(count>=0 && count<=enrollmentCapacity){
+        enrolledStudentCount = count;
+    }    
 }
 
 bool Course::isCourseFull() const {

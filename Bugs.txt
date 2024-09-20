@@ -1,0 +1,6 @@
+Following bugs were taken care of
+
+Check Invalid inputs for dropStudent
+Check Invalid inputs for enrollStudent
+Check Invalid inputs for setEnrolledStudentCount
+Syntax for getDepartmentChair function
