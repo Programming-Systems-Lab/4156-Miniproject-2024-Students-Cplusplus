@@ -1,15 +1,14 @@
+// Copyright 2024 vcm2114
 #include <string>
 #include <map>
 #include "Course.h"
-#ifndef DEPARTMENT_H
-#define DEPARTMENT_H
+#ifndef _USERS_VIRGILEMISON_DOCUMENTS_COLUMBIA_FALL24_ADV_SWE_4156_MINIPROJECT_2024_STUDENTS_CPLUSPLUS_INDIVIDUALMINIPROJECTCPP_INCLUDE_DEPARTMENT_H_
+#define _USERS_VIRGILEMISON_DOCUMENTS_COLUMBIA_FALL24_ADV_SWE_4156_MINIPROJECT_2024_STUDENTS_CPLUSPLUS_INDIVIDUALMINIPROJECTCPP_INCLUDE_DEPARTMENT_H_
 
-#include <map>
-#include <string>
 #include <memory>
 
 class Department {
-    public:
+ public:
         Department(std::string deptCode, std::map<std::string, std::shared_ptr<Course>> courses,
                 std::string departmentChair, int numberOfMajors);
 
@@ -27,7 +26,7 @@ class Department {
         std::string getDepartmentChair() const;
         std::map<std::string, std::shared_ptr<Course>> getCourseSelection() const;
 
-    private:
+ private:
         int numberOfMajors;
         std::string deptCode;
         std::string departmentChair;
@@ -36,4 +35,4 @@ class Department {
 
 
 
-#endif
+#endif  // _USERS_VIRGILEMISON_DOCUMENTS_COLUMBIA_FALL24_ADV_SWE_4156_MINIPROJECT_2024_STUDENTS_CPLUSPLUS_INDIVIDUALMINIPROJECTCPP_INCLUDE_DEPARTMENT_H_"

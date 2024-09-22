@@ -1,11 +1,12 @@
-#include "RouteController.h"
-#include "Globals.h"
-#include "MyFileDatabase.h"
-#include "crow.h"
+// Copyright 2024 vcm2114
 #include <map>
 #include <string>
 #include <exception>
 #include <iostream>
+#include "RouteController.h"
+#include "Globals.h"
+#include "MyFileDatabase.h"
+#include "../external_libraries/Crow-1.2.0/include/crow.h"
 
 // Utility function to handle exceptions
 crow::response handleException(const std::exception& e) {
@@ -44,7 +45,7 @@ void RouteController::retrieveDepartment(const crow::request& req, crow::respons
             res.write("Department Not Found");
         } else {
             res.code = 200;
-            res.write(it->second.display()); // Use dot operator to access method
+            res.write(it->second.display());  // Use dot operator to access method
         }
         res.end();
     } catch (const std::exception& e) {
@@ -86,7 +87,7 @@ void RouteController::retrieveCourse(const crow::request& req, crow::response& r
                 res.write("Course Not Found");
             } else {
                 res.code = 200;
-                res.write(courseIt->second->display()); // Use dot operator to access method
+                res.write(courseIt->second->display());  // Use dot operator to access method
             }
         }
         res.end();
@@ -129,7 +130,7 @@ void RouteController::isCourseFull(const crow::request& req, crow::response& res
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write(course->isCourseFull() ? "true" : "false"); // Use dot operator to call method
+                res.write(course->isCourseFull() ? "true" : "false");  // Use dot operator to call method
             }
         }
         res.end();
@@ -160,7 +161,8 @@ void RouteController::getMajorCountFromDept(const crow::request& req, crow::resp
             res.write("Department Not Found");
         } else {
             res.code = 200;
-            res.write("There are: " + std::to_string(deptIt->second.getNumberOfMajors()) + " majors in the department"); // Use dot operator to call method
+            res.write("There are: " + std::to_string(deptIt->second.getNumberOfMajors()) +
+            " majors in the department");  // Use dot operator to call method
         }
         res.end();
     } catch (const std::exception& e) {
@@ -190,7 +192,8 @@ void RouteController::identifyDeptChair(const crow::request& req, crow::response
             res.write("Department Not Found");
         } else {
             res.code = 200;
-            res.write(deptIt->second.getDepartmentChair() + " is the department chair."); // Use dot operator to call method
+            res.write(deptIt->second.getDepartmentChair() +
+            " is the department chair.");  // Use dot operator to call method
         }
         res.end();
     } catch (const std::exception& e) {
@@ -232,7 +235,8 @@ void RouteController::findCourseLocation(const crow::request& req, crow::respons
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write(course->getCourseLocation() + " is where the course is located."); // Use dot operator to call method
+                res.write(course->getCourseLocation() +
+                " is where the course is located.");  // Use dot operator to call method
             }
         }
         res.end();
@@ -275,7 +279,8 @@ void RouteController::findCourseInstructor(const crow::request& req, crow::respo
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write(course->getInstructorName() + " is the instructor for the course."); // Use dot operator to call method
+                res.write(course->getInstructorName() +
+                " is the instructor for the course.");  // Use dot operator to call method
             }
         }
         res.end();
@@ -318,7 +323,7 @@ void RouteController::findCourseTime(const crow::request& req, crow::response& r
             } else {
                 auto course = courseIt->second;
                 res.code = 200;
-                res.write("The course meets at: " + course->getCourseTimeSlot()); 
+                res.write("The course meets at: " + course->getCourseTimeSlot());
             }
         }
         res.end();
@@ -347,7 +352,7 @@ void RouteController::addMajorToDept(const crow::request& req, crow::response& r
             res.code = 404;
             res.write("Department Not Found");
         } else {
-            deptIt->second.addPersonToMajor(); // Use dot operator to call method
+            deptIt->second.addPersonToMajor();  // Use dot operator to call method
             res.code = 200;
             res.write("Attribute was updated successfully");
         }
@@ -428,7 +433,7 @@ void RouteController::setCourseInstructor(const crow::request& req, crow::respon
         auto instructor = req.url_params.get("instructor");
 
         int courseCode = std::stoi(courseCodeStr);
-    
+
         auto departmentMapping = myFileDatabase->getDepartmentMapping();
         auto deptIt = departmentMapping.find(deptCode);
 
@@ -551,10 +556,10 @@ void RouteController::dropStudentFromCourse(const crow::request& req, crow::resp
                 bool isStudentDropped = courseIt->second->dropStudent();
                 if (isStudentDropped) {
                     res.code = 200;
-                    res.write("Student has been dropped"); 
+                    res.write("Student has been dropped");
                 } else {
                     res.code = 400;
-                    res.write("Student has not been dropped"); 
+                    res.write("Student has not been dropped");
                 }
             }
         }

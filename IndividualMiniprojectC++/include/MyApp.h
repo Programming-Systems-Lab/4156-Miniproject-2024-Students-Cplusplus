@@ -1,5 +1,6 @@
-#ifndef MYAPP_H
-#define MYAPP_H
+// Copyright 2024 vcm2114
+#ifndef _USERS_VIRGILEMISON_DOCUMENTS_COLUMBIA_FALL24_ADV_SWE_4156_MINIPROJECT_2024_STUDENTS_CPLUSPLUS_INDIVIDUALMINIPROJECTCPP_INCLUDE_MYAPP_H_
+#define _USERS_VIRGILEMISON_DOCUMENTS_COLUMBIA_FALL24_ADV_SWE_4156_MINIPROJECT_2024_STUDENTS_CPLUSPLUS_INDIVIDUALMINIPROJECTCPP_INCLUDE_MYAPP_H_
 
 #include <string>
 #include <map>
@@ -8,13 +9,13 @@
 #include "MyFileDatabase.h"
 
 class MyApp {
-    public:
+ public:
         static void run(const std::string& mode);
         static void onTermination();
         static void overrideDatabase(MyFileDatabase* testData);
         static MyFileDatabase* getDatabase();
 
-    private:
+ private:
         static void setupDatabase();
         static void resetDataFile();
 
@@ -22,4 +23,4 @@ class MyApp {
         static bool saveData;
 };
 
-#endif
+#endif  // _USERS_VIRGILEMISON_DOCUMENTS_COLUMBIA_FALL24_ADV_SWE_4156_MINIPROJECT_2024_STUDENTS_CPLUSPLUS_INDIVIDUALMINIPROJECTCPP_INCLUDE_MYAPP_H_"

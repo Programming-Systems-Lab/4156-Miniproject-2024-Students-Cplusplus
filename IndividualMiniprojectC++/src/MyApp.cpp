@@ -1,3 +1,4 @@
+// Copyright 2024 vcm2114
 #include "MyApp.h"
 #include <iostream>
 

@@ -1,3 +1,4 @@
+// Copyright 2024 vcm2114
 #include "MyFileDatabase.h"
 #include <iostream>
 #include <fstream>
@@ -64,7 +65,7 @@ void MyFileDatabase::deSerializeObjectFromFile() {
         inFile.read(reinterpret_cast<char*>(&keyLen), sizeof(keyLen));
         std::string key(keyLen, ' ');
         inFile.read(&key[0], keyLen);
-        Department dept; 
+        Department dept;
         dept.deserialize(inFile);
         departmentMapping[key] = dept;
     }

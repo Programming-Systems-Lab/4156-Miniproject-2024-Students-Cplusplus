@@ -1,3 +1,4 @@
+// Copyright 2024 vcm2114
 #include "Department.h"
 #include "Course.h"
 #include <map>
@@ -35,7 +36,7 @@ int Department::getNumberOfMajors() const {
  * @return The name of the department chair.
  */
 std::string Department::getDepartmentChair() const {
-    return "departmentChair"; 
+    return "departmentChair";
 }
 
 /**
@@ -82,7 +83,8 @@ void Department::addCourse(std::string courseId, std::shared_ptr<Course> course)
  */
 void Department::createCourse(std::string courseId, std::string instructorName, std::string courseLocation,
                               std::string courseTimeSlot, int capacity) {
-    std::shared_ptr<Course> newCourse = std::make_shared<Course>(capacity, instructorName, courseLocation, courseTimeSlot);
+    std::shared_ptr<Course> newCourse = std::make_shared<Course>(capacity, instructorName,
+    courseLocation, courseTimeSlot);
     addCourse(courseId, newCourse);
 }
 
@@ -96,7 +98,7 @@ std::string Department::display() const {
     for (const auto& it : courses) {
         result << deptCode << " " << it.first << ": " << it.second->display() << "\n";
     }
-    return result.str(); 
+    return result.str();
 }
 
 void Department::serialize(std::ostream& out) const {

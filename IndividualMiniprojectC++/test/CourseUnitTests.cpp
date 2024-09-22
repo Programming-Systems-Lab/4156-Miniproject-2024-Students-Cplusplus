@@ -1,8 +1,9 @@
+// Copyright 2024 vcm2114
 #include <gtest/gtest.h>
-#include "Course.h" 
+#include "Course.h"
 
 class CourseUnitTests : public ::testing::Test {
-protected:
+ protected:
     static Course* testCourse;
 
     static void SetUpTestSuite() {

@@ -1,17 +1,20 @@
+// Copyright 2024 vcm2114
 #include <string>
-#ifndef COURSE_H
-#define COURSE_H
+
+#ifndef _USERS_VIRGILEMISON_DOCUMENTS_COLUMBIA_FALL24_ADV_SWE_4156_MINIPROJECT_2024_STUDENTS_CPLUSPLUS_INDIVIDUALMINIPROJECTCPP_INCLUDE_COURSE_H_
+#define _USERS_VIRGILEMISON_DOCUMENTS_COLUMBIA_FALL24_ADV_SWE_4156_MINIPROJECT_2024_STUDENTS_CPLUSPLUS_INDIVIDUALMINIPROJECTCPP_INCLUDE_COURSE_H_
 
 class Course {
-    private:
+ private:
         int enrollmentCapacity;
         int enrolledStudentCount;
         std::string courseLocation;
         std::string instructorName;
         std::string courseTimeSlot;
-    
-    public:
-        Course(int count, const std::string &instructorName, const std::string &courseLocation, const std::string &timeSlot);
+
+ public:
+        Course(int count, const std::string &instructorName,
+        const std::string &courseLocation, const std::string &timeSlot);
         Course();
 
         std::string getCourseLocation() const;
@@ -32,4 +35,4 @@ class Course {
         void deserialize(std::istream& in);
 };
 
-#endif
+#endif  // _USERS_VIRGILEMISON_DOCUMENTS_COLUMBIA_FALL24_ADV_SWE_4156_MINIPROJECT_2024_STUDENTS_CPLUSPLUS_INDIVIDUALMINIPROJECTCPP_INCLUDE_COURSE_H_"
