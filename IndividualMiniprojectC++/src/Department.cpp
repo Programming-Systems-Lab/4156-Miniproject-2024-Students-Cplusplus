@@ -102,20 +102,20 @@ std::string Department::display() const {
 }
 
 void Department::serialize(std::ostream& out) const {
-    size_t deptCodeLen = deptCode.length();
+    std::size_t deptCodeLen = deptCode.length();
     out.write(reinterpret_cast<const char*>(&deptCodeLen), sizeof(deptCodeLen));
     out.write(deptCode.c_str(), deptCodeLen);
 
-    size_t chairLen = departmentChair.length();
+    std::size_t chairLen = departmentChair.length();
     out.write(reinterpret_cast<const char*>(&chairLen), sizeof(chairLen));
     out.write(departmentChair.c_str(), chairLen);
 
     out.write(reinterpret_cast<const char*>(&numberOfMajors), sizeof(numberOfMajors));
 
-    size_t mapSize = courses.size();
+    std::size_t mapSize = courses.size();
     out.write(reinterpret_cast<const char*>(&mapSize), sizeof(mapSize));
     for (const auto& it : courses) {
-        size_t courseIdLen = it.first.length();
+        std::size_t courseIdLen = it.first.length();
         out.write(reinterpret_cast<const char*>(&courseIdLen), sizeof(courseIdLen));
         out.write(it.first.c_str(), courseIdLen);
         it.second->serialize(out);
@@ -123,22 +123,22 @@ void Department::serialize(std::ostream& out) const {
 }
 
 void Department::deserialize(std::istream& in) {
-    size_t deptCodeLen;
+    std::size_t deptCodeLen;
     in.read(reinterpret_cast<char*>(&deptCodeLen), sizeof(deptCodeLen));
     deptCode.resize(deptCodeLen);
     in.read(&deptCode[0], deptCodeLen);
 
-    size_t chairLen;
+    std::size_t chairLen;
     in.read(reinterpret_cast<char*>(&chairLen), sizeof(chairLen));
     departmentChair.resize(chairLen);
     in.read(&departmentChair[0], chairLen);
 
     in.read(reinterpret_cast<char*>(&numberOfMajors), sizeof(numberOfMajors));
 
-    size_t mapSize;
+    std::size_t mapSize;
     in.read(reinterpret_cast<char*>(&mapSize), sizeof(mapSize));
-    for (size_t i = 0; i < mapSize; ++i) {
-        size_t courseIdLen;
+    for (std::size_t i = 0; i < mapSize; ++i) {
+        std::size_t courseIdLen;
         in.read(reinterpret_cast<char*>(&courseIdLen), sizeof(courseIdLen));
         std::string courseId(courseIdLen, ' ');
         in.read(&courseId[0], courseIdLen);

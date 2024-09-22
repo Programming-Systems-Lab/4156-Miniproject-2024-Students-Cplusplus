@@ -4,3 +4,10 @@ Check Invalid inputs for dropStudent
 Check Invalid inputs for enrollStudent
 Check Invalid inputs for setEnrolledStudentCount
 Syntax for getDepartmentChair function
+Syntax errors for size_t datatype
+enrolledStudentCount variable initialized with 0
+Corrected condition check for dropStudent function
+getInstructorName function's return variable changed to InstructorName
+getCourseTimeslot function's return variable changed to CourseTimeslot
+Corrected condition check for setEnrolledStudentCount function
+Corrected return value of isCourseFull function

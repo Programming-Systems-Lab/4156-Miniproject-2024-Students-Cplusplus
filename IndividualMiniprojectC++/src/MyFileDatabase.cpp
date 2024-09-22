@@ -41,10 +41,10 @@ std::map<std::string, Department> MyFileDatabase::getDepartmentMapping() const {
  */
 void MyFileDatabase::saveContentsToFile() const {
     std::ofstream outFile(filePath, std::ios::binary);
-    size_t mapSize = departmentMapping.size();
+    std::size_t mapSize = departmentMapping.size();
     outFile.write(reinterpret_cast<const char*>(&mapSize), sizeof(mapSize));
     for (const auto& it : departmentMapping) {
-        size_t keyLen = it.first.length();
+        std::size_t keyLen = it.first.length();
         outFile.write(reinterpret_cast<const char*>(&keyLen), sizeof(keyLen));
         outFile.write(it.first.c_str(), keyLen);
         it.second.serialize(outFile);
@@ -59,10 +59,10 @@ void MyFileDatabase::saveContentsToFile() const {
  */
 void MyFileDatabase::deSerializeObjectFromFile() {
     std::ifstream inFile(filePath, std::ios::binary);
-    size_t mapSize;
+    std::size_t mapSize;
     inFile.read(reinterpret_cast<char*>(&mapSize), sizeof(mapSize));
-    for (size_t i = 0; i < mapSize; ++i) {
-        size_t keyLen;
+    for (std::size_t i = 0; i < mapSize; ++i) {
+        std::size_t keyLen;
         inFile.read(reinterpret_cast<char*>(&keyLen), sizeof(keyLen));
         std::string key(keyLen, ' ');
         inFile.read(&key[0], keyLen);

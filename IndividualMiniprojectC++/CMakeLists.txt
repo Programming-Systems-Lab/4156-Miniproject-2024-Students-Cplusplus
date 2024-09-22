@@ -35,8 +35,8 @@ target_include_directories(IndividualMiniproject PUBLIC
 target_link_libraries(IndividualMiniproject PRIVATE 
     gtest 
     gtest_main
-    ws2_32
-    wsock32
+    # ws2_32
+    # wsock32
 )
 
 enable_testing()

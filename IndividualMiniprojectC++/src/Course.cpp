@@ -1,9 +1,13 @@
 /* Copyright 2024 Vidushi Bansal */
 
 #include "Course.h"
-#include <iostream>
+#include <stdlib.h>
+#include <stddef.h>
+#include <cstddef>
 #include <string>
-
+#include <new>
+#include <iostream>
+#include <boost/mpl/size_t_fwd.hpp>
 
 /**
  * Constructs a new Course object with the given parameters. Initial count starts at 0.
@@ -14,7 +18,7 @@
  * @param capacity           The maximum number of students that can enroll in the course.
  */
 Course::Course(int capacity, const std::string& instructorName, const std::string& courseLocation, const std::string& timeSlot)
-    : enrollmentCapacity(capacity), enrolledStudentCount(500), courseLocation(courseLocation), instructorName(instructorName), courseTimeSlot(timeSlot) {}
+    : enrollmentCapacity(capacity), enrolledStudentCount(0), courseLocation(courseLocation), instructorName(instructorName), courseTimeSlot(timeSlot) {}
 
 /**
  * Constructs a default Course object with the default parameters.
@@ -43,7 +47,7 @@ bool Course::enrollStudent() {
  * @return true if the student is successfully dropped, false otherwise.
  */
 bool Course::dropStudent() {
-    if(enrolledStudentCount>0 and enrolledStudentCount<=enrollmentCapacity){
+    if(enrolledStudentCount>=0 && enrolledStudentCount<=enrollmentCapacity){
         enrolledStudentCount--;
         return true;
     }
@@ -56,11 +60,11 @@ std::string Course::getCourseLocation() const {
 }
 
 std::string Course::getInstructorName() const {
-    return courseTimeSlot;
+    return instructorName;
 }
 
 std::string Course::getCourseTimeSlot() const {
-    return instructorName;
+    return courseTimeSlot;
 }
 
 std::string Course::display() const {
@@ -82,28 +86,28 @@ void Course::reassignTime(const std::string& newTime) {
 }
 
 void Course::setEnrolledStudentCount(int count) {
-    if(count>=0 && count<=enrollmentCapacity){
+    if(count>0 && count<=enrollmentCapacity){
         enrolledStudentCount = count;
     }    
 }
 
 bool Course::isCourseFull() const {
-    return enrollmentCapacity > enrolledStudentCount;
+    return enrollmentCapacity == enrolledStudentCount;
 }
 
 void Course::serialize(std::ostream& out) const {
     out.write(reinterpret_cast<const char*>(&enrollmentCapacity), sizeof(enrollmentCapacity));
     out.write(reinterpret_cast<const char*>(&enrolledStudentCount), sizeof(enrolledStudentCount));
 
-    size_t locationLen = courseLocation.length();
+    std::size_t locationLen = courseLocation.length();
     out.write(reinterpret_cast<const char*>(&locationLen), sizeof(locationLen));
     out.write(courseLocation.c_str(), locationLen);
 
-    size_t instructorLen = instructorName.length();
+    std::size_t instructorLen = instructorName.length();
     out.write(reinterpret_cast<const char*>(&instructorLen), sizeof(instructorLen));
     out.write(instructorName.c_str(), instructorLen);
 
-    size_t timeSlotLen = courseTimeSlot.length();
+    std::size_t timeSlotLen = courseTimeSlot.length();
     out.write(reinterpret_cast<const char*>(&timeSlotLen), sizeof(timeSlotLen));
     out.write(courseTimeSlot.c_str(), timeSlotLen);
 }
@@ -112,17 +116,17 @@ void Course::deserialize(std::istream& in) {
     in.read(reinterpret_cast<char*>(&enrollmentCapacity), sizeof(enrollmentCapacity));
     in.read(reinterpret_cast<char*>(&enrolledStudentCount), sizeof(enrolledStudentCount));
 
-    size_t locationLen;
+    std::size_t locationLen;
     in.read(reinterpret_cast<char*>(&locationLen), sizeof(locationLen));
     courseLocation.resize(locationLen);
     in.read(&courseLocation[0], locationLen);
 
-    size_t instructorLen;
+    std::size_t instructorLen;
     in.read(reinterpret_cast<char*>(&instructorLen), sizeof(instructorLen));
     instructorName.resize(instructorLen);
     in.read(&instructorName[0], instructorLen);
 
-    size_t timeSlotLen;
+    std::size_t timeSlotLen;
     in.read(reinterpret_cast<char*>(&timeSlotLen), sizeof(timeSlotLen));
     courseTimeSlot.resize(timeSlotLen);
     in.read(&courseTimeSlot[0], timeSlotLen);
